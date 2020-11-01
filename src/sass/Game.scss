@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700&display=swap');
+
+$background-color: rgba(31,32,36);
+$font-stack: 'Inter', Arial, sans-serif;
+
+.game__background {
+  width: 100%;
+  max-width: 1600px;
+  position: relative;
+  margin: auto;
+  height: 600px;
+  background-size: cover;
+  color: white;
+}
+
+.game__background-gradient {
+  width: 100%;
+  position: absolute;
+  margin: auto;
+  height: 600px;
+  background: rgb(31,32,36);
+  background: linear-gradient(180deg, rgba(31,32,36,0.5970588919161415) 0%, rgba(31,32,36,1) 80%, rgba(31,32,36,1) 100%);
+}
+
+.game__title {
+  font-family: $font-stack;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.game__stars {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.game__desc {
+  font-family: $font-stack;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.game__showcase {
+  margin-bottom: 24px;
+}

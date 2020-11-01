@@ -1,0 +1,39 @@
+.showcase {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.showcase__active {
+  border-radius: 6px;
+  max-height: 400px;
+}
+.showcase__active img {
+  border-radius: 6px;
+}
+
+.showcase__alternate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding-left: 12px;
+  gap: 12px;
+}
+
+.showcase__button {
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  background: black;
+  cursor: pointer;
+}
+.showcase__button:hover {
+  opacity: 1;
+}
+.showcase__button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/*# sourceMappingURL=GameShowcase.css.map */

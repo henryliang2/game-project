@@ -1,0 +1,13 @@
+.nav {
+  width: 100%;
+  min-height: 80px;
+  background: white;
+}
+
+.nav__layout {
+  width: 80vw;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/*# sourceMappingURL=Navigation.css.map */
