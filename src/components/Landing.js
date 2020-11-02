@@ -8,12 +8,14 @@ const Landing = () => {
   const [upcomingGames, setUpcomingGames] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:8080/upcoming')
-    .then(jsonData => jsonData.json())
-    .then(data => {
-      setUpcomingGames(data.results.slice(0, 3))
-    })
-  }, [])
+    if(!upcomingGames.length) {
+      fetch('http://localhost:8080/upcoming')
+      .then(jsonData => jsonData.json())
+      .then(data => {
+        setUpcomingGames(data.results.slice(0, 3))
+      })
+    }
+  }, []) // eslint-disable-line
 
   return (
     <div className='layout'>

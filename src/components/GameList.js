@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; //eslint-disable-line
 import './../styles/App.css';
-import './../styles/Popular.css';
+import './../styles/GameList.css';
 
 const GameList = ({ games }) => {
 

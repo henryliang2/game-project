@@ -6,6 +6,8 @@ import Game from './components/Game';
 import GameList from './components/GameList';
 import './styles/App.css';
 
+export const UserContext = React.createContext(null);
+
 function App() {
 
   const [user, setUser] = useState({});
@@ -20,34 +22,38 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/popular')
-    .then(jsonData => jsonData.json())
-    .then(data => { 
-      const gameArray = data.results.slice(0, 6);
-      setPopularGames(gameArray); 
-    })
-  }, [])
+    if(!popularGames.length) {
+      fetch('http://localhost:8080/popular')
+      .then(jsonData => jsonData.json())
+      .then(data => { 
+        const gameArray = data.results.slice(0, 6);
+        setPopularGames(gameArray); 
+      })
+    }
+  }, []) // eslint-disable-line
 
   return (
     <React.Fragment>
       <Router>
+        <UserContext.Provider value={ { user } }>
 
-        <Navigation />
+          <Navigation />
 
-        <Switch>
+          <Switch>
 
-          <Route path="/game/:gameId" children={
-            <Game />
-          }>
-          </Route>
+            <Route path="/game/:gameId" children={
+              <Game />
+            }>
+            </Route>
 
-          <Route path="/">
-            <Landing />
-            <GameList games={ popularGames } />
-          </Route>
-        
-        </Switch>
-      
+            <Route path="/">
+              <Landing />
+              <GameList games={ popularGames } />
+            </Route>
+          
+          </Switch>
+
+        </UserContext.Provider>
       </Router>    
     </React.Fragment>
   );

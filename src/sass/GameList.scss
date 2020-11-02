@@ -3,9 +3,8 @@
 $font-stack: 'Inter', Arial, sans-serif;
 
 .game-card__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  justify-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .game-card {
@@ -13,6 +12,7 @@ $font-stack: 'Inter', Arial, sans-serif;
   height: 240px;
   
   img {
+    
     width: 100%;
     height: 100%;
     object-fit: cover;
