@@ -11,6 +11,8 @@
   position: relative;
   top: 0px;
   z-index: 2;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav__logo {

@@ -8,7 +8,16 @@ import './styles/App.css';
 
 function App() {
 
+  const [user, setUser] = useState({});
   const [popularGames, setPopularGames] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/user/sync', { credentials: 'include' })
+    .then(jsonData => jsonData.json())
+    .then(user => {
+      if(user.userId) setUser(user);
+    })
+  }, [])
 
   useEffect(() => {
     fetch('http://localhost:8080/popular')
