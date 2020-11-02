@@ -1,21 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; //eslint-disable-line
 import './../styles/App.css';
 import './../styles/Popular.css';
 
-const Popular = () => {
-
-  const [games, setGames] = useState([])
-  
-  useEffect(() => {
-    fetch('http://localhost:8080/popular')
-    .then(jsonData => jsonData.json())
-    .then(data => { 
-      const gameArray = data.results.slice(0, 6);
-      console.log(gameArray);
-      setGames(gameArray); 
-    })
-  }, [])
+const GameList = ({ games }) => {
 
   return (
     <div className='layout'>
@@ -26,7 +14,7 @@ const Popular = () => {
             return (
               <div className='game-card' key={i}>
                 <Link to={`/game/${game.id}`}>
-                  <img src={ game.background_image }/>
+                  <img src={ game.background_image } alt={ game.name }/>
                 </Link>
                 <div className='game-card__name'>{ game.name }</div>
               </div>
@@ -38,4 +26,4 @@ const Popular = () => {
   )
 }
 
-export default Popular;
+export default GameList;
