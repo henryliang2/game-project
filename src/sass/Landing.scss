@@ -1,4 +1,5 @@
 $landing__text-padding: 18px;
+$font-stack: 'Inter', Arial, sans-serif;
 
 .landing {
   width: 100%;
@@ -12,6 +13,48 @@ $landing__text-padding: 18px;
 .landing__text {
   min-height: $landing__text-padding;
   text-align: right;
+}
+
+.landing__image {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+  border-radius: 6px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .landing__text-overlay {
+    position: absolute;
+    transition: all 0.2s ease;
+    bottom: -36px;
+    right: 0;
+    width: 100%;
+    height: 80px;
+    background: black;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 24px;
+    padding-top: 24px;
+    font-family: $font-stack;
+    font-weight: 600;
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:hover .landing__text-overlay {
+    bottom: 0;
+    opacity: 1;
+  }
+
 }
 
 .landing__image--left {
@@ -59,10 +102,4 @@ $landing__text-padding: 18px;
   grid-column-end: 3;
   grid-row-start: 4;
   grid-row-end: 5;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }

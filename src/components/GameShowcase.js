@@ -23,7 +23,7 @@ const GameShowcase = ({ game, gameId }) => {
         setScreenshots(shortArray);
       }
     });
-  }, [])
+  }, []) //eslint-disable-line
 
   return (
     <React.Fragment>
@@ -32,12 +32,12 @@ const GameShowcase = ({ game, gameId }) => {
           {
             game.clip && selectedButton === 0
 
-            ? <video controls autoPlay muted width="100%">
+            ? <video controls autoPlay muted>
                 <source src={ game.clip.clip } type="video/mp4" />
                 Your browser does not support embedded videos
               </video>
             
-            : <img src={screenshots[selectedButton] }/>
+            : <img src={screenshots[selectedButton] } alt='main screenshot'/>
           }
         </div>
         <div className='showcase__alternate'>
@@ -48,7 +48,7 @@ const GameShowcase = ({ game, gameId }) => {
                   className='showcase__button' 
                   onClick={ () => { setSelectedButton(i) }}
                   key={i}>
-                    <img src={ url } />
+                    <img src={ url } alt='screenshot' />
                 </div>
                 );
             })

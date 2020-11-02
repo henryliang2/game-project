@@ -3,10 +3,14 @@
   width: 100%;
   max-width: 1600px;
   position: relative;
+  top: -100px;
   margin: auto;
   height: 600px;
   background-size: cover;
   color: white;
+}
+.game__background .layout {
+  padding-top: 100px;
 }
 
 .game__background-gradient {
@@ -22,6 +26,7 @@
   font-family: "Inter", Arial, sans-serif;
   font-size: 3rem;
   font-weight: 600;
+  padding-top: 48px;
   margin-bottom: 24px;
 }
 
@@ -42,6 +47,22 @@
 
 .game__showcase {
   margin-bottom: 24px;
+}
+
+.votes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.votes__column {
+  display: flex;
+  align-items: center;
+}
+.votes__column p {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0 12px;
 }
 
 /*# sourceMappingURL=Game.css.map */

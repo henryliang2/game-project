@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './../styles/Landing.css'
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
+import './../styles/App.css';
+import './../styles/Landing.css';
 
 const Landing = () => {
 
@@ -16,29 +18,32 @@ const Landing = () => {
   return (
     <div className='layout'>
 
-    { upcomingGames.length &&
+      <div className='layout__title'>Upcoming</div>
+    
+      { upcomingGames.length &&
 
-      <div className='landing'>
-        <div className='landing__image landing__image--left'>
+        <div className='landing'>
+          <div className='landing__image landing__image--left'>
+            <Link to={`/game/${upcomingGames[0].id}`}> 
+              <img src={ upcomingGames[0].background_image } alt={ upcomingGames[0].name } />
+              <div className='landing__text-overlay'>{ upcomingGames[0].name }</div>
+              </Link>
+            </div>
+          <div className='landing__image landing__image--right-top'>
+            <Link to={`/game/${upcomingGames[1].id}`}>
+              <img src={ upcomingGames[1].background_image } alt={ upcomingGames[1].name } />
+              <div className='landing__text-overlay'>{ upcomingGames[1].name }</div>
+              </Link>
+            </div>
           
-            <img src={ upcomingGames[0].background_image } alt={ upcomingGames[0].name } />
+          <div className='landing__image landing__image--right-top'>
+            <Link to={`/game/${upcomingGames[2].id}`}>
+              <img src={ upcomingGames[2].background_image } alt={ upcomingGames[2].name } />
+              <div className='landing__text-overlay'>{ upcomingGames[2].name }</div>
+              </Link>
+            </div>
+          
         </div>
-        <div className='landing__text landing__text--left'>
-          { upcomingGames[0].name }
-        </div>
-        <div className='landing__image landing__image--right-top'>
-          <img src={ upcomingGames[1].background_image } alt={ upcomingGames[1].name } />
-        </div>
-        <div className='landing__text landing__text--right-top'>
-          { upcomingGames[1].name }
-        </div>
-        <div className='landing__image landing__image--right-top'>
-          <img src={ upcomingGames[2].background_image } alt={ upcomingGames[2].name } />
-        </div>
-        <div className='landing__text landing__text--right-bottom'>
-          { upcomingGames[2].name }
-        </div>
-      </div>
 
       }
 

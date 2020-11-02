@@ -9,16 +9,24 @@ body {
   background: $background-color;
 }
 
+a {
+  text-decoration: none;
+  outline: none;
+  color: white;
+}
+
 .layout {
   position: relative;
   width: 80vw;
   max-width: 1200px;
   margin: auto;
-  padding-top: 120px;
 }
 
-@media only screen and (max-width: 800px) {
-  .app {
-    width: 100vw;
-  }
+.layout__title {
+  $font-stack: 'Inter', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 48px;
+  margin-bottom: 12px;
 }

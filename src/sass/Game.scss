@@ -2,15 +2,22 @@
 
 $background-color: rgba(31,32,36);
 $font-stack: 'Inter', Arial, sans-serif;
+$nav-height: 100px;
 
 .game__background {
   width: 100%;
   max-width: 1600px;
   position: relative;
+  top: -$nav-height;
   margin: auto;
   height: 600px;
   background-size: cover;
   color: white;
+
+  .layout {
+    padding-top: $nav-height;
+  }
+
 }
 
 .game__background-gradient {
@@ -26,6 +33,7 @@ $font-stack: 'Inter', Arial, sans-serif;
   font-family: $font-stack;
   font-size: 3rem;
   font-weight: 600;
+  padding-top: 48px;
   margin-bottom: 24px;
 }
 
@@ -46,4 +54,22 @@ $font-stack: 'Inter', Arial, sans-serif;
 
 .game__showcase {
   margin-bottom: 24px;
+}
+
+.votes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.votes__column {
+  display: flex;
+  align-items: center;
+
+  p {
+    font-family: $font-stack;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0 12px;
+  }
+
 }

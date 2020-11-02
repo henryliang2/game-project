@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700&display=swap');
+
+$font-stack: 'Inter', Arial, sans-serif;
+
+.game-card__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.game-card {
+  width: 160px;
+  height: 240px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+
+    transition: all 0.5s ease;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+
+  }
+}
+
+.game-card__name {
+  text-align: center;
+  padding: 6px;
+  color: white;
+}

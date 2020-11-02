@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Navigation from './components/Navigation';
 import Landing from './components/Landing'
 import Game from './components/Game';
+import Popular from './components/Popular';
 import './styles/App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
           <Route path="/">
             <Landing />
+            <Popular />
           </Route>
         
         </Switch>
