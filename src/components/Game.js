@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
 import GameShowcase from './GameShowcase';
+import { BackgroundImageContext } from './../App';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
@@ -12,14 +13,19 @@ const Game = () => {
 
   const { gameId } = useParams();
 
-  const [game, setGame] = useState({})
+  const { setBackgroundImage } = useContext(BackgroundImageContext);
 
+  const [game, setGame] = useState({})
   const [starArray, setStarArray] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8080/game/${gameId}`)
     .then(jsonData => jsonData.json())
-    .then(data => { console.log(data); setGame(data) })
+    .then(data => { 
+      console.log(data);
+      setGame(data);
+      setBackgroundImage(data.background_image);
+    })
   }, []) //eslint-disable-line
 
   useEffect(() => {
@@ -41,10 +47,6 @@ const Game = () => {
   }, [game]) //eslint-disable-line
 
   return (
-      <div className='game__background' style={{
-        backgroundImage: `url(${game.background_image})`
-      }}>
-        <div className='game__background-gradient'></div>
         <div className='layout'> 
           <div className='game__title'>{ game.name }</div>
           <div className='game__stars'>
@@ -63,7 +65,6 @@ const Game = () => {
           </div>
           <div className='game__desc'>{ game.description_string }</div>
         </div>
-      </div>
   );
 }
 

@@ -6,7 +6,7 @@ import './../styles/GameList.css';
 const GameList = ({ games, title }) => {
 
   return (
-    <div className='layout'>
+    <React.Fragment>
       { 
         title && <div className='layout__title'>{ title }</div>
       } 
@@ -24,7 +24,7 @@ const GameList = ({ games, title }) => {
           })
         }
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

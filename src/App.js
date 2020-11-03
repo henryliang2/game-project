@@ -8,11 +8,12 @@ import GameList from './components/GameList';
 import './styles/App.css';
 
 export const UserContext = React.createContext(null);
+export const BackgroundImageContext = React.createContext(null);
 
 function App() {
 
   const [user, setUser] = useState({});
-  const [popularGames, setPopularGames] = useState([]);
+  const [backgroundImage, setBackgroundImage] = useState(process.env.PUBLIC_URL + '/default-background.jpg');
 
   useEffect(() => {
     fetch('http://localhost:8080/user/sync', { credentials: 'include' })
@@ -22,45 +23,39 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-    if(!popularGames.length) {
-      fetch('http://localhost:8080/popular')
-      .then(jsonData => jsonData.json())
-      .then(data => { 
-        const gameArray = data.results.slice(0, 6);
-        setPopularGames(gameArray); 
-      })
-    }
-  }, []) // eslint-disable-line
-
   return (
     <React.Fragment>
       <Router>
         <UserContext.Provider value={ { user } }>
+          <BackgroundImageContext.Provider value={ { backgroundImage, setBackgroundImage } }>
 
-          <Navigation />
+            <Navigation />
 
-          <Switch>
+            <div className='game__background' style={{backgroundImage: `url(${backgroundImage})`}}>
+              
+              <div className='game__background-gradient'></div>
 
-            <Route path="/search/:queryString" children={
-              <Search />
-            }>
-            </Route>
+              <Switch>
 
-            <Route path="/game/:gameId" children={
-              <Game />
-            }>
-            </Route>
+                <Route path="/search/:queryString" children={
+                  <Search />
+                }>
+                </Route>
 
-            <Route path="/">
-              <Landing />
-              <GameList 
-                title={ 'Popular Games' }
-                games={ popularGames } />
-            </Route>
-          
-          </Switch>
+                <Route path="/game/:gameId" children={
+                  <Game />
+                }>
+                </Route>
 
+                <Route path="/">
+                  <Landing />
+                </Route>
+              
+              </Switch>
+
+            </div>
+
+          </BackgroundImageContext.Provider>
         </UserContext.Provider>
       </Router>    
     </React.Fragment>
