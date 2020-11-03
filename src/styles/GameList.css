@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700&display=swap");
 .game-card__container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .game-card {
   width: 160px;
   height: 240px;
-  padding: 0px 12px;
+  padding-right: 24px;
   padding-bottom: 64px;
 }
 .game-card img {
