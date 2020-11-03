@@ -25,7 +25,7 @@ const Search = () => {
     <div className='layout' >
 
       <GameList 
-        title='Search Results'
+        title={ `Results for "${ queryString }"` }
         games={ returnedGames }
       />
 

@@ -16,10 +16,10 @@ $font-stack: 'Inter', Arial, sans-serif;
 }
 
 .landing__image {
+  background: #222;
   position: relative;
   overflow: hidden;
   transition: all 0.2s ease;
-  opacity: 0.8;
   border-radius: 6px;
 
   img {
@@ -45,6 +45,16 @@ $font-stack: 'Inter', Arial, sans-serif;
     font-size: 1.2rem;
     opacity: 0.8;
   }
+}
+
+.img {
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.img--loaded {
+
+  opacity: 0.8;
 
   &:hover {
     opacity: 1;
@@ -54,7 +64,6 @@ $font-stack: 'Inter', Arial, sans-serif;
     bottom: 0;
     opacity: 1;
   }
-
 }
 
 .landing__image--left {
@@ -62,7 +71,6 @@ $font-stack: 'Inter', Arial, sans-serif;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 4;
-  background: #444;
 }
 
 .landing__text--left {
@@ -88,7 +96,7 @@ $font-stack: 'Inter', Arial, sans-serif;
   grid-row-end: 3;
 }
 
-.landing__right--bottom {
+.landing__image--right-bottom {
   min-height: 200px;
   grid-column-start: 2;
   grid-column-end: 3;

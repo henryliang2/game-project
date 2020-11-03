@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import './../styles/App.css'
 import './../styles/GameShowcase.css'
 
 const GameShowcase = ({ game, gameId }) => {
@@ -6,6 +7,13 @@ const GameShowcase = ({ game, gameId }) => {
   const [screenshots, setScreenshots] = useState([]);
 
   const [selectedButton, setSelectedButton] = useState(0);
+
+  const image0 = useRef(null);
+  const image1 = useRef(null);
+  const image2 = useRef(null);
+  const image3 = useRef(null);
+
+  const refArray = [image0, image1, image2, image3];
 
   useEffect(() => {
     fetch(`http://localhost:8080/screenshots/${gameId}`)
@@ -48,7 +56,13 @@ const GameShowcase = ({ game, gameId }) => {
                   className='showcase__button' 
                   onClick={ () => { setSelectedButton(i) }}
                   key={i}>
-                    <img src={ url } alt='screenshot' />
+                    <img 
+                      ref={ refArray[i] }
+                      className='img'
+                      src={ url } 
+                      alt='screenshot' 
+                      onLoad={() => { refArray[i].current.classList.add('img--loaded') }}
+                    />
                 </div>
                 );
             })

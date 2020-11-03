@@ -24,7 +24,7 @@ const Game = () => {
     .then(data => { 
       console.log(data);
       setGame(data);
-      setBackgroundImage(data.background_image);
+      if(data.background_image) setBackgroundImage(data.background_image);
     })
   }, []) //eslint-disable-line
 

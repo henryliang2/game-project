@@ -5,22 +5,38 @@
 }
 
 .game-card {
+  position: relative;
   width: 160px;
   min-height: 240px;
   padding-right: 24px;
   padding-bottom: 64px;
   margin-bottom: 12px;
 }
-.game-card img {
+
+.game-card__image {
   width: 100%;
   height: 100%;
+  max-height: 240px;
   object-fit: cover;
   border-radius: 6px;
   transition: all 0.5s ease;
-  opacity: 0.5;
+  opacity: 0;
 }
-.game-card img:hover {
+
+.game-card__image--loaded {
+  opacity: 0.6;
+}
+.game-card__image--loaded:hover {
   opacity: 1;
+}
+
+.game-card__spinner {
+  position: absolute;
+  width: 160px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-card__name {
