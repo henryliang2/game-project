@@ -100,4 +100,8 @@
   color: white;
 }
 
+form .hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=Navigation.css.map */

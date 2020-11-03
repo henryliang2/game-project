@@ -5,11 +5,14 @@ $font-stack: 'Inter', Arial, sans-serif;
 .game-card__container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .game-card {
   width: 160px;
   height: 240px;
+  padding: 0px 12px;
+  padding-bottom: 64px;
   
   img {
     

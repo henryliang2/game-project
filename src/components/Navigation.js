@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; //eslint-disable-line
+import React, { useContext, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom"; //eslint-disable-line
 import { UserContext } from './../App'
 import './../styles/Navigation.css'
 
@@ -7,7 +7,9 @@ const Navigation = () => {
 
   const { user } = useContext(UserContext);
 
-  console.log(user);
+  const [inputfield, setInputfield] = useState('');
+
+  const history = useHistory();
 
   return (
     <div className='nav'>
@@ -18,11 +20,20 @@ const Navigation = () => {
         </Link>
 
         <div className='nav__right-col'>
-          <div className='nav__searchbar'>
-            <input type='text'
-              placeholder='Search for a Game ...'
-            />
-          </div>
+          <form onSubmit={(e) => { 
+              e.preventDefault();
+              history.push(`/search/${inputfield}`)
+            }
+          }>
+            <div className='nav__searchbar'>
+              <input 
+                type='text' 
+                onChange={ (event) => { setInputfield(event.target.value) } }
+                placeholder='Search for a Game ...' />
+            </div>
+            <input className='hidden' type='submit'/>
+          </form>
+
           { 
             user.userId
 

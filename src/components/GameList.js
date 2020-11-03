@@ -3,11 +3,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './../styles/App.css';
 import './../styles/GameList.css';
 
-const GameList = ({ games }) => {
+const GameList = ({ games, title }) => {
 
   return (
     <div className='layout'>
-      <div className='layout__title'>Popular</div>
+      { 
+        title && <div className='layout__title'>{ title }</div>
+      } 
       <div className='game-card__container'>
         {
           games.map((game, i) => {

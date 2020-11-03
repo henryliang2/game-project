@@ -20,7 +20,7 @@ const Landing = () => {
   return (
     <div className='layout'>
 
-      <div className='layout__title'>Upcoming</div>
+      <div className='layout__title'>Most Anticipated Games</div>
     
       { upcomingGames.length &&
 

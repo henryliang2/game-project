@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Navigation from './components/Navigation';
 import Landing from './components/Landing'
 import Game from './components/Game';
+import Search from './components/Search';
 import GameList from './components/GameList';
 import './styles/App.css';
 
@@ -41,6 +42,11 @@ function App() {
 
           <Switch>
 
+            <Route path="/search/:queryString" children={
+              <Search />
+            }>
+            </Route>
+
             <Route path="/game/:gameId" children={
               <Game />
             }>
@@ -48,7 +54,9 @@ function App() {
 
             <Route path="/">
               <Landing />
-              <GameList games={ popularGames } />
+              <GameList 
+                title={ 'Popular Games' }
+                games={ popularGames } />
             </Route>
           
           </Switch>
