@@ -19,22 +19,39 @@
 }
 
 .nav__logo {
-  position: relative;
-  top: -12px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: -12px;
+  transition: all 0.2s ease;
   height: 100px;
   width: 240px;
   background: #66130a;
-  color: white;
-  font-family: "Bebas Neue", Arial, sans-serif;
-  font-size: 2.4rem;
-  transition: all 0.2s ease;
-  text-decoration: underline;
 }
 .nav__logo:hover {
   top: 0px;
+}
+
+.nav__upper-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Bebas Neue", Arial, sans-serif;
+  font-size: 2.4rem;
+  text-decoration: underline;
+}
+
+.nav__lower-triangle {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-top: 24px solid #66130a;
 }
 
 .nav__right-col {

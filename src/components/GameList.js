@@ -21,6 +21,7 @@ const GameList = ({ games, title }) => {
                 <div className='game-card__name'>{ game.name }</div>
               </div>
             );
+
           })
         }
       </div>

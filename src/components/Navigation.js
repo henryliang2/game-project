@@ -16,7 +16,10 @@ const Navigation = () => {
       <div className='nav__layout'>
 
         <Link to='/'>
-          <div className='nav__logo'>Game Project</div>
+          <div className='nav__logo'>
+            <div className='nav__upper-box'>Game Project</div>
+            <div className='nav__lower-triangle'></div>
+          </div>
         </Link>
 
         <div className='nav__right-col'>
