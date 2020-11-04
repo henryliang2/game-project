@@ -10,14 +10,14 @@ const Navigation = () => {
   const { user } = useContext(UserContext);
 
   const history = useHistory();
-  const dropdownRef = useRef(null);
+  const rightColRef = useRef(null);
 
   const [inputfield, setInputfield] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     const handleClick = (e) => { 
-      if (!dropdownRef.current.contains(e.target)) {      // inside click     
+      if (!rightColRef.current.contains(e.target)) {      // inside click     
        setShowDropdown(false)    
       } 
     };
@@ -36,7 +36,7 @@ const Navigation = () => {
           </div>
         </Link>
 
-        <div className='nav__right-col'>
+        <div className='nav__right-col' ref={ rightColRef }>
           <form onSubmit={(e) => { 
               e.preventDefault();
               history.push(`/search/${inputfield}`)
@@ -56,7 +56,6 @@ const Navigation = () => {
 
             ? <div 
                 className='nav__user' 
-                ref={ dropdownRef }
                 onClick={() => { if(user.userId) setShowDropdown(!showDropdown) 
                 }}>
                   <div className='nav__profile-image'><img src={ user.image } alt='user'/></div>
