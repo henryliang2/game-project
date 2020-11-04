@@ -33,9 +33,6 @@ const Landing = () => {
 
 
   useEffect(() => {
-
-    console.log(threeMonthsAgo);
-
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
 
     if(!upcomingGames.length) {

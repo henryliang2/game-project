@@ -62,15 +62,16 @@ const Game = () => {
         <div className='layout'> 
           
           <div className='game__title'>
+
             { game.name }
 
             <div className='game__toggle-buttons'>
+
               <ToggleButton 
                 type='watchlist' 
                 isInCollection={ isInWatchList } 
                 game={ game } 
                 />
-
               <ToggleButton 
                 type='favourites' 
                 isInCollection={ isInFavourites } 

@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700&display=swap");
 .game__title {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  flex-wrap: wrap;
   font-family: "Inter", Arial, sans-serif;
   font-size: 3rem;
   font-weight: 600;
@@ -11,7 +11,11 @@
 }
 
 .game__toggle-buttons {
-  margin-right: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
 }
 
 .game__stars {

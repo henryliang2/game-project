@@ -4,7 +4,7 @@ $font-stack: 'Inter', Arial, sans-serif;
 
 .game-card__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap;
 }
 
@@ -26,6 +26,9 @@ $font-stack: 'Inter', Arial, sans-serif;
 
   transition: all 0.5s ease;
   opacity: 0;
+  -webkit-box-shadow: 6px 6px 12px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 6px 6px 12px 0px rgba(0,0,0,0.6);
+  box-shadow: 6px 6px 12px 0px rgba(0,0,0,0.6);
 }
 
 @media only screen and (max-width: 800px) {
