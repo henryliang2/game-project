@@ -23,10 +23,21 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+    if(user.userId) {
+      fetch('http://localhost:8080/user/update', { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ user }),
+        credentials: 'include' 
+      })
+    }
+  }, [user])
+
   return (
     <React.Fragment>
       <Router>
-        <UserContext.Provider value={ { user } }>
+        <UserContext.Provider value={ { user, setUser } }>
           <BackgroundImageContext.Provider value={ { backgroundImage, setBackgroundImage } }>
 
             <Navigation />

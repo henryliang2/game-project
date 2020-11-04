@@ -9,10 +9,10 @@ const User = () => {
   const { user } = useContext(UserContext);
   const { setBackgroundImage } = useContext(BackgroundImageContext);
 
-  const { queryString } = useParams();
-
   useEffect(() => {
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
+
+    console.log(user);
   }, [])
 
   return (

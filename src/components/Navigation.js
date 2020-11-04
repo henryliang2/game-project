@@ -17,6 +17,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleClick = (e) => { 
+      console.log(user);
       if (!rightColRef.current.contains(e.target)) {      // inside click     
        setShowDropdown(false)    
       } 
@@ -39,7 +40,7 @@ const Navigation = () => {
         <div className='nav__right-col' ref={ rightColRef }>
           <form onSubmit={(e) => { 
               e.preventDefault();
-              history.push(`/search/${inputfield}`)
+              history.push(`/search/${inputfield}`);
             }
           }>
             <div className='nav__searchbar'>

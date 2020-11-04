@@ -5,7 +5,7 @@ import { BackgroundImageContext } from './../App';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
-
+import AddButton from './AddButton';
 import './../styles/App.css';
 import './../styles/Game.css';
 
@@ -48,7 +48,13 @@ const Game = () => {
 
   return (
         <div className='layout'> 
-          <div className='game__title'>{ game.name }</div>
+          
+          <div className='game__title'>
+            { game.name }
+            <AddButton type='watchlist' game={ game } />
+            <AddButton type='favourites' game={ game } />
+          </div>
+          
           <div className='game__stars'>
             {
               starArray.map((star, i) => {
@@ -57,6 +63,7 @@ const Game = () => {
                 else return <StarBorderIcon fontSize='large' key={i}/>
               })
             }
+            
           </div>
           <div className='game__showcase'>
             { game.id && 
