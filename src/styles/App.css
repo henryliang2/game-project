@@ -24,6 +24,11 @@ a {
 .background .layout {
   padding-top: 100px;
 }
+@media only screen and (max-width: 800px) {
+  .background .layout {
+    padding-top: 160px;
+  }
+}
 
 .background-overlay {
   width: 100%;

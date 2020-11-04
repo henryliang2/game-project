@@ -8,7 +8,7 @@
 .game-card {
   position: relative;
   width: 160px;
-  min-height: 240px;
+  height: 240px;
   padding: 12px;
   padding-bottom: 64px;
   margin-bottom: 12px;
@@ -24,6 +24,12 @@
   opacity: 0;
 }
 
+@media only screen and (max-width: 800px) {
+  .game-card {
+    width: 140px;
+    height: 210px;
+  }
+}
 .game-card__image--loaded {
   opacity: 0.6;
 }

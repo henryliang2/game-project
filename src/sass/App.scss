@@ -30,6 +30,12 @@ a {
     padding-top: $nav-height;
   }
 
+  @media only screen and (max-width: 800px){
+    .layout {
+      padding-top: 160px;
+    }
+  }
+
 }
 
 .background-overlay {

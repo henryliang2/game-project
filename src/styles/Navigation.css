@@ -18,6 +18,11 @@
   color: white;
 }
 
+@media only screen and (max-width: 800px) {
+  .nav__layout {
+    flex-direction: column;
+  }
+}
 .nav__logo {
   display: flex;
   justify-content: center;
@@ -59,6 +64,11 @@
   display: flex;
 }
 
+@media only screen and (max-width: 800px) {
+  .nav__right-col {
+    margin: 24px 0;
+  }
+}
 .nav__searchbar {
   margin-right: 12px;
 }
@@ -78,6 +88,14 @@
   background: rgba(255, 255, 255, 0.8);
   color: #222;
   padding-right: 48px;
+}
+@media only screen and (max-width: 800px) {
+  .nav__searchbar input {
+    width: 160px;
+  }
+  .nav__searchbar input:focus {
+    padding-right: 16px;
+  }
 }
 
 .nav__user {
