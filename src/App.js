@@ -48,8 +48,13 @@ function App() {
 
               <Switch>
 
+                <Route path="/browse/:dateString/:orderingString/:queryString" children={
+                  <Search type='browse' />
+                }>
+                </Route>
+
                 <Route path="/search/:queryString" children={
-                  <Search />
+                  <Search type='targeted' />
                 }>
                 </Route>
 

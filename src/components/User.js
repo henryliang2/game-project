@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
 import './../styles/App.css';
 import GameList from './GameList';
@@ -13,7 +13,7 @@ const User = () => {
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
 
     console.log(user);
-  }, [])
+  }, []) //eslint-disable-line
 
   return (
     <div className='layout' >

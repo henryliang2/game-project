@@ -1,5 +1,6 @@
 $landing__text-padding: 18px;
 $font-stack: 'Inter', Arial, sans-serif;
+$dark-red: #66130a;
 
 .img {
   width: 100%;
@@ -43,6 +44,7 @@ $font-stack: 'Inter', Arial, sans-serif;
   overflow: hidden;
   transition: all 0.2s ease;
   border-radius: 6px;
+  min-height: 200px;
 
   .landing__text-overlay {
     position: absolute;
@@ -76,24 +78,66 @@ $font-stack: 'Inter', Arial, sans-serif;
 }
 
 .landing__image--right-top {
-  min-height: 200px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
-  background: #444;
 }
 
-.landing__image--right-bottom {
-  min-height: 200px;
+.landing__image--right-center {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
-  background: #444;
 }
 
-@media only screen and (max-width: 800px) {
+.landing__select {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+
+  .select {
+    display: flex;
+
+    select {
+      width: 100%;
+      max-width: 400px;
+      height: 48px;
+      margin-right: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding-left: 12px;
+      padding-right: 12px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    .select__submit {
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px 36px;
+      border: none;
+      border-radius: 6px;
+      color: #444;
+      height: 48px;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    
+      &:hover {
+        background: $dark-red;
+        color: white;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
 
   .landing {
     grid-template-columns: 1fr;
@@ -113,11 +157,18 @@ $font-stack: 'Inter', Arial, sans-serif;
     grid-row-end: 3;
   }
   
-  .landing__image--right-bottom {
+  .landing__image--right-center {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
+  }
+
+  .landing__select {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
   }
 
 }

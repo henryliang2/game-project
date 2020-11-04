@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useHistory } from "react-router-dom"; //eslint-disable-line
 import { BackgroundImageContext } from './../App';
 import GameList from './GameList';
 import './../styles/App.css';
@@ -11,12 +11,30 @@ const Landing = () => {
 
   const [popularGames, setPopularGames] = useState([]);
   const [upcomingGames, setUpcomingGames] = useState([]);
+  const [selectValue, setSelectValue] = useState('');
 
   const landingImageLeft = useRef(null);
-  const landingImageTopRight = useRef(null);
-  const landingImageBottomRight = useRef(null);
+  const landingImageRightTop = useRef(null);
+  const landingImageRightCenter = useRef(null);
+
+  const history = useHistory();
+
+  const currDate = new Date();
+  let threeMonthsAgo = new Date();
+  let oneYearForward = new Date();
+  let oneYearAgo = new Date();
+  threeMonthsAgo.setMonth(currDate.getMonth() - 3);
+  oneYearForward.setFullYear(currDate.getFullYear() + 1);
+  oneYearAgo.setFullYear(currDate.getFullYear() - 1);
+  const currDateString = currDate.toISOString().slice(0, 10);
+  const threeMonthsAgoString = threeMonthsAgo.toISOString().slice(0, 10);
+  const oneYearForwardString = oneYearForward.toISOString().slice(0, 10);
+  const oneYearAgoString = oneYearAgo.toISOString().slice(0, 10);
+
 
   useEffect(() => {
+
+    console.log(threeMonthsAgo);
 
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
 
@@ -24,7 +42,7 @@ const Landing = () => {
       fetch('http://localhost:8080/upcoming')
       .then(jsonData => jsonData.json())
       .then(data => {
-        setUpcomingGames(data.results.slice(0, 3))
+        setUpcomingGames(data.results.slice(0, 4))
       })
     }
 
@@ -41,7 +59,7 @@ const Landing = () => {
   return (
     <div className='layout'>
 
-      <div className='layout__title'>Most Anticipated Games</div>
+      <div className='layout__title'>Most Anticipated Releases</div>
     
       { upcomingGames.length > 0 &&
 
@@ -62,33 +80,69 @@ const Landing = () => {
             <Link to={`/game/${upcomingGames[1].id}`}>
               <img 
                 className='img'
-                ref={landingImageTopRight} 
+                ref={landingImageRightTop} 
                 src={ upcomingGames[1].background_image } 
                 alt={ upcomingGames[1].name } 
-                onLoad={() => { landingImageTopRight.current.classList.add('img--loaded') }}
+                onLoad={() => { landingImageRightTop.current.classList.add('img--loaded') }}
                 />
               <div className='landing__text-overlay'>{ upcomingGames[1].name }</div>
               </Link>
             </div>
           
-          <div className='landing__image landing__image--right-bottom'>
+          <div className='landing__image landing__image--right-center'>
             <Link to={`/game/${upcomingGames[2].id}`}>
               <img 
                 className='img'
-                ref={landingImageBottomRight} 
+                ref={landingImageRightCenter} 
                 src={ upcomingGames[2].background_image } 
                 alt={ upcomingGames[2].name } 
-                onLoad={() => { landingImageBottomRight.current.classList.add('img--loaded') }}
+                onLoad={() => { landingImageRightCenter.current.classList.add('img--loaded') }}
                 />
               <div className='landing__text-overlay'>{ upcomingGames[2].name }</div>
             </Link>
+          </div>
+
+          <div className='landing__select'>
+            <div className='layout__title'>Browse for Games</div>
+            <form onSubmit={(event) => {
+              event.preventDefault();
+              if (!selectValue) return;
+              history.push(`/browse/${selectValue}`)
+            }}>
+              <div className='select'>
+                <select 
+                  value={selectValue}
+                  onChange={(event) => { setSelectValue(event.target.value); console.log(event.target) }
+                }>
+                  <option value=''>
+                    Select An Option
+                  </option>
+                  <option value={`${currDateString},${oneYearForwardString}/-added/Most Anticipated This Year`}>
+                    Most Anticipated This Year
+                  </option>
+                  <option value={`${threeMonthsAgoString},${currDateString}/-added/Popular in Past 3 Months`}>
+                    Popular in Past 3 Months
+                  </option>
+                  <option value={`${oneYearAgoString},${currDateString}/-added/Popular in Past Year`}>
+                    Popular in Past Year
+                  </option>
+                  <option value={`${threeMonthsAgoString},${currDateString}/-rating/Highest Rated in Past 3 Months`}>
+                    Highest Rated in Past 3 Months
+                  </option>
+                  <option value={`${oneYearAgoString},${currDateString}/-rating/Highest Rated in Past Year`}>
+                    Highest Rated in Past Year
+                  </option>
+                </select>
+                <input type='submit' value='Browse' className='select__submit' />
+              </div>
+            </form>
           </div>
         </div>
 
       }
 
       <GameList 
-        title={ 'Popular Games' }
+        title={ 'Trending' }
         games={ popularGames } 
       />
 
