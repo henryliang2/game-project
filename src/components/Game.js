@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
 import GameShowcase from './GameShowcase';
-import { BackgroundImageContext } from './../App';
+import { BackgroundImageContext, UserContext } from './../App';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
-import AddButton from './AddButton';
+import ToggleButton from './ToggleButton';
 import './../styles/App.css';
 import './../styles/Game.css';
 
@@ -13,22 +13,34 @@ const Game = () => {
 
   const { gameId } = useParams();
 
+  const { user } = useContext(UserContext);
   const { setBackgroundImage } = useContext(BackgroundImageContext);
 
   const [game, setGame] = useState({})
   const [starArray, setStarArray] = useState([]);
+  const [isInWatchList, setIsInWatchList] = useState(false);
+  const [isInFavourites, setIsInFavourites] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:8080/game/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
-      console.log(data);
       setGame(data);
       if(data.background_image) setBackgroundImage(data.background_image);
     })
   }, []) //eslint-disable-line
 
   useEffect(() => {
+    if(user.userId) {
+      user.watchlist.forEach((game, i) => {
+        if(game.id.toString() === gameId) setIsInWatchList(true);
+      })
+      user.favourites.forEach((game, i) => {
+        if(game.id.toString() === gameId) setIsInFavourites(true);
+      })
+    }
+
+    // Set Number of Stars
     if (game.stars) {
       console.log(game.stars);
       const stars = [];
@@ -44,15 +56,25 @@ const Game = () => {
       setStarArray(stars);
       console.log(stars)
     }
-  }, [game]) //eslint-disable-line
+  }, [game, user]) //eslint-disable-line
 
   return (
         <div className='layout'> 
           
           <div className='game__title'>
             { game.name }
-            <AddButton type='watchlist' game={ game } />
-            <AddButton type='favourites' game={ game } />
+
+            <ToggleButton 
+              type='watchlist' 
+              isInCollection={ isInWatchList } 
+              game={ game } 
+              />
+
+            <ToggleButton 
+              type='favourites' 
+              isInCollection={ isInFavourites } 
+              game={ game } 
+              />
           </div>
           
           <div className='game__stars'>

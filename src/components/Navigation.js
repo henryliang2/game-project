@@ -17,7 +17,6 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleClick = (e) => { 
-      console.log(user);
       if (!rightColRef.current.contains(e.target)) {      // inside click     
        setShowDropdown(false)    
       } 
