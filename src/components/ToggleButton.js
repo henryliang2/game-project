@@ -4,7 +4,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import Snackbar from '@material-ui/core/Snackbar';
 import ReactTooltip from 'react-tooltip';
 import './../styles/ToggleButton.css';
 
@@ -90,7 +89,7 @@ const ToggleButton = ({ game, type, isInCollection }) => {
         {
           (type === 'watchlist' && !showFullIcon) && 
             <VisibilityOutlinedIcon 
-              data-tip='Sign in to add this game to your watchlist!' 
+              data-tip={ user.userId ? 'Add this game to your watchlist!' : 'Sign in to add this game to your watchlist!' }
               fontSize='large'
             />
         }
@@ -101,14 +100,16 @@ const ToggleButton = ({ game, type, isInCollection }) => {
         {
           (type === 'favourites' && !showFullIcon) && 
             <FavoriteBorderOutlinedIcon 
-              data-tip='Sign in to add this game to your favourites!' 
+              data-tip={ user.userId ? 'Add this game to your favourites!' : 'Sign in to add this game to your favourites!' }
               fontSize='large'
             />
         }
       </span>
 
       { // Show Tooltip if no user signed in
-        !user.userId && <ReactTooltip type='error' effect='solid'/>
+        user.userId 
+        ? <ReactTooltip type='dark' effect='solid'/>
+        : <ReactTooltip type='error' effect='solid'/>
       }
     </React.Fragment>
   );
