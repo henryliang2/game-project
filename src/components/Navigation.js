@@ -48,7 +48,9 @@ const Navigation = () => {
                 type='text' 
                 value={ inputfield }
                 onChange={ (event) => { setInputfield(event.target.value) } }
-                placeholder='Search for a Game ...' />
+                maxlength='24'
+                placeholder='Search for a Game ...' 
+                required />
             </div>
             <input className='hidden' type='submit'/>
           </form>
