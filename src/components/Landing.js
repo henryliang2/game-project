@@ -43,7 +43,7 @@ const Landing = () => {
 
       <div className='layout__title'>Most Anticipated Games</div>
     
-      { upcomingGames.length &&
+      { upcomingGames.length > 0 &&
 
         <div className='landing'>
           <div className='landing__image landing__image--left'>
