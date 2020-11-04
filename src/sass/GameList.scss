@@ -4,6 +4,7 @@ $font-stack: 'Inter', Arial, sans-serif;
 
 .game-card__container {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -11,7 +12,7 @@ $font-stack: 'Inter', Arial, sans-serif;
   position: relative;
   width: 160px;
   min-height: 240px;
-  padding-right: 24px;
+  padding: 12px;
   padding-bottom: 64px;
   margin-bottom: 12px;
 }

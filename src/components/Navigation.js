@@ -40,11 +40,13 @@ const Navigation = () => {
           <form onSubmit={(e) => { 
               e.preventDefault();
               history.push(`/search/${inputfield}`);
+              setInputfield('');
             }
           }>
             <div className='nav__searchbar'>
               <input 
                 type='text' 
+                value={ inputfield }
                 onChange={ (event) => { setInputfield(event.target.value) } }
                 placeholder='Search for a Game ...' />
             </div>
