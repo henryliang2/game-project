@@ -4,6 +4,8 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import Snackbar from '@material-ui/core/Snackbar';
+import ReactTooltip from 'react-tooltip';
 import './../styles/ToggleButton.css';
 
 const ToggleButton = ({ game, type, isInCollection }) => {
@@ -17,6 +19,15 @@ const ToggleButton = ({ game, type, isInCollection }) => {
   useEffect(() => {
     setShowFullIcon(isInCollection)
   }, [isInCollection])
+
+  useEffect(() => {
+    if(type === 'watchlist') {
+      spanRef.current.classList.add('toggle-button--watchlist');
+    } else {
+      spanRef.current.classList.add('toggle-button--favourites');
+    }
+    
+  })
 
   const addGame = () => {
     const userCopy = { ...user };
@@ -66,25 +77,39 @@ const ToggleButton = ({ game, type, isInCollection }) => {
   return (
     <React.Fragment>
       <span 
-        className='add-button' 
+        className='toggle-button' 
+        ref={ spanRef }
         onClick={ () => {
           if(!user.userId) return;
           showFullIcon ? removeGame() : addGame()
-        } } 
-        ref={ spanRef }>
+        }}>
         {
-          (type === 'watchlist' && showFullIcon) && <VisibilityIcon fontSize='large'/>
+          (type === 'watchlist' && showFullIcon) && 
+            <VisibilityIcon style={{ fill: 'green' }} fontSize='large'/>
         }
         {
-          (type === 'watchlist' && !showFullIcon) && <VisibilityOutlinedIcon fontSize='large'/>
+          (type === 'watchlist' && !showFullIcon) && 
+            <VisibilityOutlinedIcon 
+              data-tip='Sign in to add this game to your watchlist!' 
+              fontSize='large'
+            />
         }
         {
-          (type === 'favourites' && showFullIcon) && <FavoriteIcon fontSize='large'/>
+          (type === 'favourites' && showFullIcon) && 
+            <FavoriteIcon style={{ fill: 'red' }} fontSize='large'/>
         }
         {
-          (type === 'favourites' && !showFullIcon) && <FavoriteBorderOutlinedIcon fontSize='large'/>
+          (type === 'favourites' && !showFullIcon) && 
+            <FavoriteBorderOutlinedIcon 
+              data-tip='Sign in to add this game to your favourites!' 
+              fontSize='large'
+            />
         }
       </span>
+
+      { // Show Tooltip if no user signed in
+        !user.userId && <ReactTooltip type='error' effect='solid'/>
+      }
     </React.Fragment>
   );
 

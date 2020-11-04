@@ -64,17 +64,19 @@ const Game = () => {
           <div className='game__title'>
             { game.name }
 
-            <ToggleButton 
-              type='watchlist' 
-              isInCollection={ isInWatchList } 
-              game={ game } 
-              />
+            <div className='game__toggle-buttons'>
+              <ToggleButton 
+                type='watchlist' 
+                isInCollection={ isInWatchList } 
+                game={ game } 
+                />
 
-            <ToggleButton 
-              type='favourites' 
-              isInCollection={ isInFavourites } 
-              game={ game } 
-              />
+              <ToggleButton 
+                type='favourites' 
+                isInCollection={ isInFavourites } 
+                game={ game } 
+                />
+            </div>
           </div>
           
           <div className='game__stars'>

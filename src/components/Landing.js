@@ -32,7 +32,7 @@ const Landing = () => {
       fetch('http://localhost:8080/popular')
       .then(jsonData => jsonData.json())
       .then(data => { 
-        const gameArray = data.results.slice(0, 6);
+        const gameArray = data.results.slice(0, 12);
         setPopularGames(gameArray); 
       })
     }

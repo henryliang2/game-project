@@ -5,11 +5,18 @@ $font-stack: 'Inter', Arial, sans-serif;
 $nav-height: 100px;
 
 .game__title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   font-family: $font-stack;
   font-size: 3rem;
   font-weight: 600;
   padding-top: 48px;
   margin-bottom: 24px;
+}
+
+.game__toggle-buttons {
+  margin-right: 24px;
 }
 
 .game__stars {
