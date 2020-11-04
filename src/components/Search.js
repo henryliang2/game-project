@@ -14,6 +14,8 @@ const Search = () => {
 
   useEffect(() => {
 
+    setReturnedGames([]);
+
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
 
     fetch(`http://localhost:8080/search/${queryString}`)

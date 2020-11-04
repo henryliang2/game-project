@@ -15,7 +15,7 @@ export const GameCard = ({ game }) => {
 
       { !isImageLoaded &&
         <div className='game-card__spinner'>
-          <CircularProgress />
+          <CircularProgress color="secondary" />
         </div>
       }
 

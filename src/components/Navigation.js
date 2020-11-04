@@ -48,7 +48,7 @@ const Navigation = () => {
                 type='text' 
                 value={ inputfield }
                 onChange={ (event) => { setInputfield(event.target.value) } }
-                maxlength='24'
+                maxLength='24'
                 placeholder='Search for a Game ...' 
                 required />
             </div>
