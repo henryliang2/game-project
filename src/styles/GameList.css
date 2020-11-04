@@ -30,8 +30,15 @@
 @media only screen and (max-width: 800px) {
   .game-card__container {
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow: auto;
     scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .game-card__container::-webkit-scrollbar {
+    display: none;
+    background: transparent;
   }
 
   .game-card {
