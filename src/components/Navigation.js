@@ -1,15 +1,29 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom"; //eslint-disable-line
 import { UserContext } from './../App'
+import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import './../styles/Navigation.css'
 
 const Navigation = () => {
 
   const { user } = useContext(UserContext);
 
-  const [inputfield, setInputfield] = useState('');
-
   const history = useHistory();
+  const dropdownRef = useRef(null);
+
+  const [inputfield, setInputfield] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+    const handleClick = (e) => { 
+      if (!dropdownRef.current.contains(e.target)) {      // inside click     
+       setShowDropdown(false)    
+      } 
+    };
+
+    document.addEventListener('mousedown', handleClick);
+  })
 
   return (
     <div className='nav'>
@@ -40,9 +54,24 @@ const Navigation = () => {
           { 
             user.userId
 
-            ? <div className='nav__user'>
-                <div className='nav__profile-image'><img src={ user.image } alt='user'/></div>
-                <div className='nav__display-name'>{ user.displayName }</div>
+            ? <div 
+                className='nav__user' 
+                ref={ dropdownRef }
+                onClick={() => { if(user.userId) setShowDropdown(!showDropdown) 
+                }}>
+                  <div className='nav__profile-image'><img src={ user.image } alt='user'/></div>
+                  <div className='nav__display-name'>{ user.displayName }</div>
+                  { 
+                    showDropdown && 
+                    <div className='nav__dropdown' >
+                      <Link to='/user'>
+                        <div className='nav__dropdown-link'><PersonIcon />&nbsp;My Profile</div>
+                      </Link>
+                      <a href='http://localhost:8080/auth/logout'>
+                        <div className='nav__dropdown-link'><ExitToAppIcon />&nbsp;Logout</div>
+                      </a>
+                    </div> 
+                  }
               </div>
 
             : <a href='http://localhost:8080/auth/google'>

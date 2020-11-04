@@ -4,7 +4,7 @@ import Navigation from './components/Navigation';
 import Landing from './components/Landing'
 import Game from './components/Game';
 import Search from './components/Search';
-import GameList from './components/GameList';
+import User from './components/User';
 import './styles/App.css';
 
 export const UserContext = React.createContext(null);
@@ -31,9 +31,9 @@ function App() {
 
             <Navigation />
 
-            <div className='game__background' style={{backgroundImage: `url(${backgroundImage})`}}>
+            <div className='background' style={{backgroundImage: `url(${backgroundImage})`}}>
               
-              <div className='game__background-gradient'></div>
+              <div className='background-overlay'></div>
 
               <Switch>
 
@@ -45,6 +45,10 @@ function App() {
                 <Route path="/game/:gameId" children={
                   <Game />
                 }>
+                </Route>
+
+                <Route path='/user'>
+                  <User />
                 </Route>
 
                 <Route path="/">

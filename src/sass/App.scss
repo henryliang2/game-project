@@ -2,6 +2,7 @@
 
 $background-color: #1F2024;
 $font__title: 'Inter', Arial, sans-serif;
+$nav-height: 100px;
 
 body {
   margin: 0;
@@ -14,6 +15,32 @@ a {
   outline: none;
   color: white;
 }
+
+.background {
+  width: 100%;
+  max-width: 1600px;
+  position: relative;
+  top: -$nav-height;
+  margin: auto;
+  height: 600px;
+  background-size: cover;
+  color: white;
+
+  .layout {
+    padding-top: $nav-height;
+  }
+
+}
+
+.background-overlay {
+  width: 100%;
+  position: absolute;
+  margin: auto;
+  height: 600px;
+  background: rgb(31,32,36);
+  background: linear-gradient(180deg, rgba(31,32,36,0.5970588919161415) 0%, rgba(31,32,36,1) 80%, rgba(31,32,36,1) 100%);
+}
+
 
 .layout {
   position: relative;

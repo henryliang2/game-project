@@ -4,31 +4,6 @@ $background-color: rgba(31,32,36);
 $font-stack: 'Inter', Arial, sans-serif;
 $nav-height: 100px;
 
-.game__background {
-  width: 100%;
-  max-width: 1600px;
-  position: relative;
-  top: -$nav-height;
-  margin: auto;
-  height: 600px;
-  background-size: cover;
-  color: white;
-
-  .layout {
-    padding-top: $nav-height;
-  }
-
-}
-
-.game__background-gradient {
-  width: 100%;
-  position: absolute;
-  margin: auto;
-  height: 600px;
-  background: rgb(31,32,36);
-  background: linear-gradient(180deg, rgba(31,32,36,0.5970588919161415) 0%, rgba(31,32,36,1) 80%, rgba(31,32,36,1) 100%);
-}
-
 .game__title {
   font-family: $font-stack;
   font-size: 3rem;

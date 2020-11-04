@@ -89,8 +89,17 @@ $dark-red: #66130a;
 }
 
 .nav__user {
+  position: relative;
   display: flex;
   align-items: center;
+  padding: 4px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 
 .nav__display-name {
@@ -121,6 +130,31 @@ $dark-red: #66130a;
   font-family: 'Inter', Arial, sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $dark-red;
+    color: white;
+  }
+}
+
+.nav__dropdown {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background: white;
+  width: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.nav__dropdown-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #444;
+  min-height: 40px;
+  padding: 6px 18px;
   transition: all 0.2s ease;
 
   &:hover {
