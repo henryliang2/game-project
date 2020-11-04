@@ -46,4 +46,14 @@
   min-height: 180px;
 }
 
+@media only screen and (max-width: 800px) {
+  .showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase__alternate {
+    margin-top: 12px;
+  }
+}
+
 /*# sourceMappingURL=GameShowcase.css.map */
