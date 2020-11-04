@@ -41,6 +41,9 @@
   font-size: 1.2rem;
   opacity: 0.8;
 }
+.landing__image:hover .landing__text-overlay {
+  bottom: 0;
+}
 
 .img {
   transition: all 0.3s ease;
