@@ -29,7 +29,18 @@ $font-stack: 'Inter', Arial, sans-serif;
 }
 
 @media only screen and (max-width: 800px) {
+
+  .game-card__container {
+    flex-wrap: nowrap;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
   .game-card {
+    scroll-snap-align: center;
+  }
+
+  .game-card__image { 
     width: 140px;
     height: 210px;
   }
