@@ -106,11 +106,17 @@ $dark-red: #66130a;
       height: 48px;
       margin-right: 12px;
       background: rgba(0, 0, 0, 0.4);
+      font-size: 0.9rem;
       color: white;
       padding-left: 12px;
       padding-right: 12px;
       border-radius: 6px;
       border: none;
+    }
+
+    option {
+      font-size: 0.9rem;
+      background: #222;
     }
 
     .select__submit {

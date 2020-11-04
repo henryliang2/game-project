@@ -20,7 +20,7 @@ const Search = ({type}) => {
     if (type === 'targeted') {
       fetch(`http://localhost:8080/search/${queryString}`)
       .then(jsonData => jsonData.json())
-      .then(data => { setReturnedGames(data.array) })
+      .then(data => { setReturnedGames(data.array); console.log(data) })
     } else if (type === 'browse') {
       fetch(`http://localhost:8080/browse/${dateString}/${orderingString}`)
       .then(jsonData => jsonData.json())
