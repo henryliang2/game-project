@@ -98,6 +98,11 @@ $dark-red: #66130a;
       color: #222;
       padding-right: 48px;
     }
+
+    &:invalid {
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
   }
 
   @media only screen and (max-width: 800px) {

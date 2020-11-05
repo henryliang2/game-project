@@ -89,6 +89,10 @@
   color: #222;
   padding-right: 48px;
 }
+.nav__searchbar input:invalid {
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 @media only screen and (max-width: 800px) {
   .nav__searchbar input {
     width: 160px;
