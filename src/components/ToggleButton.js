@@ -47,7 +47,7 @@ const ToggleButton = ({ game, type, isInCollection }) => {
       case('favourites'): spanRef.current.classList.add('toggle-button--favourites'); break;
       default: break;
     }
-  }, [])
+  }, []) //eslint-disable-line
 
   const addGame = () => {
     const userCopy = { ...user };

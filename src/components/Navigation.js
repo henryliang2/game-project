@@ -70,14 +70,14 @@ const Navigation = () => {
                       <Link to='/user'>
                         <div className='nav__dropdown-link'><PersonIcon />&nbsp;My Profile</div>
                       </Link>
-                      <a href='http://localhost:8080/auth/logout'>
+                      <a href='https://game-project-server.herokuapp.com/auth/logout'>
                         <div className='nav__dropdown-link'><ExitToAppIcon />&nbsp;Logout</div>
                       </a>
                     </div> 
                   }
               </div>
 
-            : <a href='http://localhost:8080/auth/google'>
+            : <a href='https://game-project-server.herokuapp.com/auth/google'>
                 <div className='nav__signin'>Sign In</div>
               </a>
 

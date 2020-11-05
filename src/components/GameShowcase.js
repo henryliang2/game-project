@@ -16,7 +16,7 @@ const GameShowcase = ({ game, gameId }) => {
   const refArray = [image0, image1, image2, image3];
 
   useEffect(() => {
-    fetch(`http://localhost:8080/screenshots/${gameId}`)
+    fetch(`https://game-project-server.herokuapp.com/screenshots/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
       console.log(data);

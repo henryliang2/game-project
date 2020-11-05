@@ -17,7 +17,7 @@ function App() {
   const [backgroundImage, setBackgroundImage] = useState(process.env.PUBLIC_URL + '/default-background.jpg');
 
   useEffect(() => {
-    fetch('http://localhost:8080/user/sync', { credentials: 'include' })
+    fetch('https://game-project-server.herokuapp.com/user/sync', { credentials: 'include' })
     .then(jsonData => jsonData.json())
     .then(user => {
       if(user.userId) setUser(user);
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if(user.userId) {
-      fetch('http://localhost:8080/user/update', { 
+      fetch('https://game-project-server.herokuapp.com/user/update', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ user }),

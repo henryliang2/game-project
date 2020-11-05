@@ -18,11 +18,11 @@ const Search = ({type}) => {
 
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
     if (type === 'targeted') {
-      fetch(`http://localhost:8080/search/${queryString}`)
+      fetch(`https://game-project-server.herokuapp.com/search/${queryString}`)
       .then(jsonData => jsonData.json())
       .then(data => { setReturnedGames(data.array); console.log(data) })
     } else if (type === 'browse') {
-      fetch(`http://localhost:8080/browse/${dateString}/${orderingString}`)
+      fetch(`https://game-project-server.herokuapp.com/browse/${dateString}/${orderingString}`)
       .then(jsonData => jsonData.json())
       .then(data => { setReturnedGames(data.array) })
     }

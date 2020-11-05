@@ -36,7 +36,7 @@ const Landing = () => {
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
 
     if(!upcomingGames.length) {
-      fetch('http://localhost:8080/upcoming')
+      fetch('https://game-project-server.herokuapp.com/upcoming')
       .then(jsonData => jsonData.json())
       .then(data => {
         setUpcomingGames(data.results.slice(0, 4))
@@ -44,7 +44,7 @@ const Landing = () => {
     }
 
     if(!popularGames.length) {
-      fetch('http://localhost:8080/popular')
+      fetch('https://game-project-server.herokuapp.com/popular')
       .then(jsonData => jsonData.json())
       .then(data => { 
         const gameArray = data.results.slice(0, 12);

@@ -31,7 +31,7 @@ const Game = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:8080/game/${gameId}`)
+    fetch(`https://game-project-server.herokuapp.com/game/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
       console.log(data);
