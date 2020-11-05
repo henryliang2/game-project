@@ -12,6 +12,7 @@ const Search = ({type}) => {
   const { queryString, dateString, orderingString } = useParams();
 
   const [returnedGames, setReturnedGames] = useState([]);
+  const [hasApiResponse, setHasApiResponse] = useState(false);
 
   useEffect(() => {
 
@@ -21,11 +22,19 @@ const Search = ({type}) => {
     if (type === 'targeted') {
       fetch(`https://game-project-server.herokuapp.com/search/${queryString}`)
       .then(jsonData => jsonData.json())
-      .then(data => { setReturnedGames(data.array); console.log(data) })
+      .then(data => { 
+        setReturnedGames(data.array);
+        setHasApiResponse(true); 
+      })
+      .catch(e => { setHasApiResponse(true) })
     } else if (type === 'browse') {
       fetch(`https://game-project-server.herokuapp.com/browse/${dateString}/${orderingString}`)
       .then(jsonData => jsonData.json())
-      .then(data => { setReturnedGames(data.array) })
+      .then(data => { 
+        setReturnedGames(data.array);
+        setHasApiResponse(true); 
+      })
+      .catch(e => { setHasApiResponse(true) })
     }
     
   }, [queryString]) //eslint-disable-line
@@ -33,16 +42,17 @@ const Search = ({type}) => {
   return (
     <div className='layout' >
 
-      { returnedGames.length 
+      { hasApiResponse && !returnedGames.length
 
-        ? <GameList 
-            title={ `Results for "${ queryString }"` }
-            games={ returnedGames }
-          />
-        : <React.Fragment>
+        ? <React.Fragment>
             <div className='layout__title'>{`Results for "${ queryString }"`}</div>
             <div className='blank-list__area'>No Results Found! Try a different search term.</div>
           </React.Fragment>
+
+        : <GameList 
+            title={ `Results for "${ queryString }"` }
+            games={ returnedGames }
+          />
       }
 
       
