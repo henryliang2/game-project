@@ -42,7 +42,7 @@ const Search = ({type}) => {
   return (
     <div className='layout' >
 
-      { hasApiResponse && !returnedGames.length
+      { ( hasApiResponse && returnedGames.length === 0 )
 
         ? <React.Fragment>
             <div className='layout__title'>{`Results for "${ queryString }"`}</div>
