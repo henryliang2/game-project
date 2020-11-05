@@ -12,13 +12,12 @@ export const GameCard = ({ game }) => {
 
   return (
     <div className='game-card'>
-
-      { !isImageLoaded &&
+      { // Display loading spinner if not yet loaded
+        !isImageLoaded &&
         <div className='game-card__spinner'>
           <CircularProgress color="secondary" />
         </div>
       }
-
       <Link to={`/game/${game.id}`}>
         <img 
           className='game-card__image'
@@ -28,8 +27,7 @@ export const GameCard = ({ game }) => {
           onLoad={() => { 
             setIsImageLoaded(true);
             imageRef.current.classList.add('game-card__image--loaded') ;
-          }}
-          />
+          }}/>
       </Link>
       <div className='game-card__name'>{ game.name }</div>
     </div>
@@ -40,16 +38,16 @@ const GameList = ({ games, title }) => {
 
   return (
     <React.Fragment>
-      { 
-        title && <div className='layout__title'>{ title }</div>
+      { title && 
+        <div className='layout__title'>{ title }</div>
       } 
-      <div className='game-card__container'>
-        { 
-          games.map((game, i) => {
-            return <GameCard game={game} key={i}/>
-          })
-        }
-      </div>
+      { games &&
+        <div className='game-card__container'>
+          { games.map((game, i) => {
+              return <GameCard game={game} key={i}/>
+            })}
+        </div>
+      }
     </React.Fragment>
   )
 }
