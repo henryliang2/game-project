@@ -11,22 +11,21 @@ const ToggleButton = ({ game, type, isInCollection }) => {
 
   const { user, setUser } = useContext(UserContext);
 
+  const [isFullIconDisplayed, setIsFullIconDisplayed] = useState(false);
+
   const spanRef = useRef(null);
 
-  const [showFullIcon, setShowFullIcon] = useState(false);
-
   useEffect(() => {
-    setShowFullIcon(isInCollection)
+    setIsFullIconDisplayed(isInCollection)
   }, [isInCollection])
 
   useEffect(() => {
-    if(type === 'watchlist') {
-      spanRef.current.classList.add('toggle-button--watchlist');
-    } else {
-      spanRef.current.classList.add('toggle-button--favourites');
+    switch(type){
+      case('watchlist'): spanRef.current.classList.add('toggle-button--watchlist'); break;
+      case('favourites'): spanRef.current.classList.add('toggle-button--favourites'); break;
+      default: break;
     }
-    
-  })
+  }, [])
 
   const addGame = () => {
     const userCopy = { ...user };
@@ -37,9 +36,8 @@ const ToggleButton = ({ game, type, isInCollection }) => {
       stars: game.stars,
       background_image: game.background_image,
       description_string: game.description_string,
+      clip: game.clip ? game.clip : null
     };
-
-    if(game.clip) gameObject.clip = game.clip;
 
     if (type === 'watchlist') {
       userCopy.watchlist = [...user.watchlist, gameObject];
@@ -49,7 +47,7 @@ const ToggleButton = ({ game, type, isInCollection }) => {
     }
 
     setUser(userCopy);
-    setShowFullIcon(true);
+    setIsFullIconDisplayed(true);
   }
 
   const removeGame = () => {
@@ -70,7 +68,7 @@ const ToggleButton = ({ game, type, isInCollection }) => {
     }
 
     setUser(userCopy);
-    setShowFullIcon(false);
+    setIsFullIconDisplayed(false);
   }
 
   return (
@@ -80,25 +78,22 @@ const ToggleButton = ({ game, type, isInCollection }) => {
         ref={ spanRef }
         onClick={ () => {
           if(!user.userId) return;
-          showFullIcon ? removeGame() : addGame()
+          isFullIconDisplayed ? removeGame() : addGame()
         }}>
-        {
-          (type === 'watchlist' && showFullIcon) && 
+        { // Display stylized icon based on type and whether it has been added
+          ( type === 'watchlist' && isFullIconDisplayed ) && 
             <VisibilityIcon style={{ fill: 'green' }} fontSize='large'/>
         }
-        {
-          (type === 'watchlist' && !showFullIcon) && 
+        { ( type === 'watchlist' && !isFullIconDisplayed ) && 
             <VisibilityOutlinedIcon 
               data-tip={ user.userId ? 'Add this game to your watchlist!' : 'Sign in to add this game to your watchlist!' }
               fontSize='large'
             />
         }
-        {
-          (type === 'favourites' && showFullIcon) && 
+        { ( type === 'favourites' && isFullIconDisplayed ) && 
             <FavoriteIcon style={{ fill: 'red' }} fontSize='large'/>
         }
-        {
-          (type === 'favourites' && !showFullIcon) && 
+        { ( type === 'favourites' && !isFullIconDisplayed ) && 
             <FavoriteBorderOutlinedIcon 
               data-tip={ user.userId ? 'Add this game to your favourites!' : 'Sign in to add this game to your favourites!' }
               fontSize='large'
@@ -106,7 +101,7 @@ const ToggleButton = ({ game, type, isInCollection }) => {
         }
       </span>
 
-      { // Show Tooltip if no user signed in
+      { // Show sign-in suggestion if user not signed in
         user.userId 
         ? <ReactTooltip type='dark' effect='solid'/>
         : <ReactTooltip type='error' effect='solid'/>
