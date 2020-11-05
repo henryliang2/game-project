@@ -7,6 +7,28 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import ReactTooltip from 'react-tooltip';
 import './../styles/ToggleButton.css';
 
+export const HeartIcon = ({ isFullIconDisplayed, user }) => {
+  return (
+    <React.Fragment>
+      { isFullIconDisplayed
+        ? <FavoriteIcon style={{ fill: 'red' }} fontSize='large'/>
+        : <FavoriteBorderOutlinedIcon 
+          data-tip={ user.userId ? 'Add this game to your favourites!' : 'Sign in to add this game to your favourites!' }
+          fontSize='large' />}
+    </React.Fragment>);
+}
+
+export const EyeIcon = ({ isFullIconDisplayed, user }) => {
+  return (
+    <React.Fragment>
+      { isFullIconDisplayed
+        ? <VisibilityIcon style={{ fill: 'green' }} fontSize='large'/>
+        : <VisibilityOutlinedIcon 
+            data-tip={ user.userId ? 'Add this game to your watchlist!' : 'Sign in to add this game to your watchlist!' }
+            fontSize='large' />}
+    </React.Fragment>);
+}
+
 const ToggleButton = ({ game, type, isInCollection }) => {
 
   const { user, setUser } = useContext(UserContext);
@@ -80,24 +102,9 @@ const ToggleButton = ({ game, type, isInCollection }) => {
           if(!user.userId) return;
           isFullIconDisplayed ? removeGame() : addGame()
         }}>
-        { // Display stylized icon based on type and whether it has been added
-          ( type === 'watchlist' && isFullIconDisplayed ) && 
-            <VisibilityIcon style={{ fill: 'green' }} fontSize='large'/>
-        }
-        { ( type === 'watchlist' && !isFullIconDisplayed ) && 
-            <VisibilityOutlinedIcon 
-              data-tip={ user.userId ? 'Add this game to your watchlist!' : 'Sign in to add this game to your watchlist!' }
-              fontSize='large'
-            />
-        }
-        { ( type === 'favourites' && isFullIconDisplayed ) && 
-            <FavoriteIcon style={{ fill: 'red' }} fontSize='large'/>
-        }
-        { ( type === 'favourites' && !isFullIconDisplayed ) && 
-            <FavoriteBorderOutlinedIcon 
-              data-tip={ user.userId ? 'Add this game to your favourites!' : 'Sign in to add this game to your favourites!' }
-              fontSize='large'
-            />
+        { type === 'watchlist' 
+          ? <EyeIcon isFullIconDisplayed={isFullIconDisplayed} user={user} /> 
+          : <HeartIcon isFullIconDisplayed={isFullIconDisplayed} user={user} />
         }
       </span>
 
