@@ -17,6 +17,7 @@ const Search = ({type}) => {
   useEffect(() => {
 
     setReturnedGames([]);
+    setHasApiResponse(false);
 
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
     if (type === 'targeted') {
