@@ -4,18 +4,24 @@
 
 .footer {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   color: #ddd;
   margin-top: 40px;
   padding: 40px 0;
 }
 
+.footer__leftcol {
+  display: flex;
+  align-items: center;
+}
+
 .footer__logo {
+  display: inline;
   color: #888;
   font-family: "Bebas Neue", Arial, sans-serif;
   font-size: 2.4rem;
   transition: all 0.2s ease;
-  padding-top: 4px;
   margin-right: 24px;
 }
 .footer__logo:hover {
@@ -23,10 +29,19 @@
 }
 
 .footer__github {
+  display: inline;
   color: #888;
   transition: all 0.2s ease;
 }
 .footer__github:hover {
+  color: #ddd;
+}
+
+.footer__rawg {
+  color: #888;
+  transition: all 0.2s ease;
+}
+.footer__rawg:hover {
   color: #ddd;
 }
 
