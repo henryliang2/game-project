@@ -49,8 +49,7 @@ const GameShowcase = ({ game, gameId }) => {
           }
         </div>
         <div className='showcase__alternate'>
-          { screenshots.length && 
-            screenshots.map((url, i) => {
+          { screenshots.map((url, i) => {
               return (
                 <div 
                   className='showcase__button' 

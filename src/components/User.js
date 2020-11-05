@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
+import './../styles/User.css';
 import './../styles/App.css';
 import GameList from './GameList';
 import { BackgroundImageContext, UserContext } from './../App';
@@ -17,17 +18,26 @@ const User = () => {
 
   return (
     <div className='layout' >
-
-      <GameList 
-        title={ `My Watch List` }
-        games={ user.watchlist }
-      />
-
-      <GameList 
-        title={ `My Favourites` }
-        games={ user.favourites }
-      />
-
+      { user.watchlist.length
+        ? <GameList 
+            title={ `My Watch List` }
+            games={ user.watchlist }
+          />
+        : <React.Fragment>
+            <div className='layout__title'>My Watchlist</div>
+            <div className='blank-list__area'>Add games to your watchlist to save them here!</div>
+          </React.Fragment>
+      }
+      { user.favourites.length
+        ? <GameList 
+            title={ `My Favourites` }
+            games={ user.favourites }
+          />
+        : <React.Fragment>
+            <div className='layout__title'>My Favourites</div>
+            <div className='blank-list__area'>Add games to your favourites to save them here!</div>
+          </React.Fragment>
+      }
     </div>
   );
 

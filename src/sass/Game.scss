@@ -42,20 +42,45 @@ $nav-height: 100px;
   margin-bottom: 24px;
 }
 
-.votes {
+.game__info {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
 }
 
-.votes__column {
+.game__rightcol {
+  display: flex;
+  flex-direction: column;
+}
+
+.game__description {
+  padding-right: 48px;
+}
+
+.website {
   display: flex;
   align-items: center;
+}
 
-  p {
-    font-family: $font-stack;
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin: 0 12px;
+.website__link {
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
   }
+}
 
+.website__icon {
+  padding: 4px;
+  margin-right: 4px;
+}
+
+.platform {
+  display: flex;
+  align-items: center;
+}
+
+.platform__icon {
+  padding: 4px;
+  margin-right: 4px;
 }

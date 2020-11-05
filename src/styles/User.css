@@ -1,0 +1,13 @@
+.blank-list__area {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  border: 2px #66130a dashed;
+  color: #ccc;
+}
+
+/*# sourceMappingURL=User.css.map */

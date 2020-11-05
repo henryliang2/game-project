@@ -5,6 +5,9 @@ import { BackgroundImageContext, UserContext } from './../App';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import LinkIcon from '@material-ui/icons/Link';
 import ToggleButton from './ToggleButton';
 import './../styles/App.css';
 import './../styles/Game.css';
@@ -16,21 +19,29 @@ const Game = () => {
   const { user } = useContext(UserContext);
   const { setBackgroundImage } = useContext(BackgroundImageContext);
 
-  const [game, setGame] = useState({})
   const [starArray, setStarArray] = useState([]);
   const [isInWatchList, setIsInWatchList] = useState(false);
   const [isInFavourites, setIsInFavourites] = useState(false);
+  const [game, setGame] = useState({
+    name: '',
+    id: null,
+    platforms: [],
+    stars: null,
+    description_string: ''
+  });
 
   useEffect(() => {
     fetch(`http://localhost:8080/game/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
+      console.log(data);
       setGame(data);
       if(data.background_image) setBackgroundImage(data.background_image);
     })
   }, []) //eslint-disable-line
 
   useEffect(() => {
+    // Check if game is in watchlist or favourites
     if(user.userId) {
       user.watchlist.forEach((game, i) => {
         if(game.id.toString() === gameId) setIsInWatchList(true);
@@ -40,7 +51,7 @@ const Game = () => {
       })
     }
 
-    // Set Number of Stars
+    // Create an Array representing stars of the form [1, 1, 1, 0.5, 0]
     if (game.stars) {
       console.log(game.stars);
       const stars = [];
@@ -54,19 +65,15 @@ const Game = () => {
         stars.push(0);
       }
       setStarArray(stars);
-      console.log(stars)
     }
   }, [game, user]) //eslint-disable-line
 
   return (
         <div className='layout'> 
-          
+
           <div className='game__title'>
-
             { game.name }
-
             <div className='game__toggle-buttons'>
-
               <ToggleButton 
                 type='watchlist' 
                 isInCollection={ isInWatchList } 
@@ -79,23 +86,54 @@ const Game = () => {
                 />
             </div>
           </div>
-          
+
           <div className='game__stars'>
-            {
-              starArray.map((star, i) => {
+            { starArray.map((star, i) => {
                 if (star === 1) return <StarIcon fontSize='large' key={i}/>
                 if (star === 0.5) return <StarHalfIcon fontSize='large' key={i}/>
                 else return <StarBorderIcon fontSize='large' key={i}/>
-              })
-            }
-            
+              })}
           </div>
+
           <div className='game__showcase'>
-            { game.id && 
-              <GameShowcase game={ game } gameId={gameId} /> 
-            }
+            <GameShowcase game={ game } gameId={gameId} /> 
           </div>
-          <div className='game__desc'>{ game.description_string }</div>
+          
+          <div className='game__info'>
+            <div className='game__description'>
+              <div className='layout__title'>About This Game</div>
+              { game.description_string }
+            </div>
+            <div className='game__rightcol'>
+              { game.website &&
+                <div className='game__website'>
+                  <div className='layout__title'>Official Website</div>
+                  <div className='website'>
+                    <div className='website__icon'><LinkIcon fontSize='large'/></div>
+                    <div className='website__link'>
+                      <a href={game.website} alt='game website' target='_blank' rel='noopener noreferrer'>
+                        { game.website }
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              }
+              <div className='game__platforms'>
+                <div className='layout__title'>Platforms</div>
+                { game.platforms.map((platform, i) => {
+                    return (
+                      <div className='platform' key={i}>
+                        <div className='platform__icon'>{ 
+                          ['PC', 'macOS', 'Linux'].includes(platform.platform.name)
+                          ? <DesktopWindowsIcon fontSize='large' />
+                          : <SportsEsportsIcon fontSize='large' />
+                        }</div>
+                        <div className='platform__name'>{ platform.platform.name }</div>
+                      </div>);
+                })}
+              </div>
+            </div>
+          </div>
         </div>
   );
 }
