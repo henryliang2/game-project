@@ -10,6 +10,12 @@ body {
   background: $background-color;
 }
 
+@media only screen and (max-width: 800px){
+  .layout {
+    padding-top: 60px;
+  }
+}
+
 a {
   text-decoration: none;
   outline: none;
@@ -19,23 +25,13 @@ a {
 .background {
   width: 100%;
   max-width: 1600px;
-  position: relative;
-  top: -$nav-height;
+  position: absolute;
+  top: 0;
   margin: auto;
   height: 600px;
   background-size: cover;
-  color: white;
-
-  .layout {
-    padding-top: $nav-height;
-  }
-
-  @media only screen and (max-width: 800px){
-    .layout {
-      padding-top: 160px;
-    }
-  }
-
+  background-position-y: 0;
+  background-position-x: center;
 }
 
 .background-overlay {

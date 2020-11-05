@@ -5,6 +5,11 @@ body {
   background: #1F2024;
 }
 
+@media only screen and (max-width: 800px) {
+  .layout {
+    padding-top: 60px;
+  }
+}
 a {
   text-decoration: none;
   outline: none;
@@ -14,20 +19,13 @@ a {
 .background {
   width: 100%;
   max-width: 1600px;
-  position: relative;
-  top: -100px;
+  position: absolute;
+  top: 0;
   margin: auto;
   height: 600px;
   background-size: cover;
-  color: white;
-}
-.background .layout {
-  padding-top: 100px;
-}
-@media only screen and (max-width: 800px) {
-  .background .layout {
-    padding-top: 160px;
-  }
+  background-position-y: 0;
+  background-position-x: center;
 }
 
 .background-overlay {

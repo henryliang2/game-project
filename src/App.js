@@ -5,6 +5,7 @@ import Landing from './components/Landing'
 import Game from './components/Game';
 import Search from './components/Search';
 import User from './components/User';
+import Footer from './components/Footer';
 import './styles/App.css';
 
 export const UserContext = React.createContext(null);
@@ -42,38 +43,40 @@ function App() {
 
             <Navigation />
 
-            <div className='background' style={{backgroundImage: `url(${backgroundImage})`}}>
-              
-              <div className='background-overlay'></div>
+            <main>
+              <div className='background' style={{backgroundImage: `url(${backgroundImage})`}}>
+                <div className='background-overlay'></div>
+              </div>
 
-              <Switch>
+                <Switch>
 
-                <Route path="/browse/:dateString/:orderingString/:queryString" children={
-                  <Search type='browse' />
-                }>
-                </Route>
+                  <Route path="/browse/:dateString/:orderingString/:queryString" children={
+                    <Search type='browse' />
+                  }>
+                  </Route>
 
-                <Route path="/search/:queryString" children={
-                  <Search type='targeted' />
-                }>
-                </Route>
+                  <Route path="/search/:queryString" children={
+                    <Search type='targeted' />
+                  }>
+                  </Route>
 
-                <Route path="/game/:gameId" children={
-                  <Game />
-                }>
-                </Route>
+                  <Route path="/game/:gameId" children={
+                    <Game />
+                  }>
+                  </Route>
 
-                <Route path='/user'>
-                  <User />
-                </Route>
+                  <Route path='/user'>
+                    <User />
+                  </Route>
 
-                <Route path="/">
-                  <Landing />
-                </Route>
-              
-              </Switch>
+                  <Route path="/">
+                    <Landing />
+                  </Route>
+                
+                </Switch>
+            </main>
 
-            </div>
+            <Footer />
 
           </BackgroundImageContext.Provider>
         </UserContext.Provider>

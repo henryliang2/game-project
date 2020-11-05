@@ -8,6 +8,7 @@
   font-weight: 600;
   padding-top: 48px;
   margin-bottom: 24px;
+  color: white;
 }
 
 .game__toggle-buttons {
@@ -24,6 +25,7 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 24px;
+  color: white;
 }
 
 .game__desc {
@@ -40,6 +42,7 @@
 .game__info {
   display: grid;
   grid-template-columns: 3fr 2fr;
+  color: white;
 }
 
 .game__description {
