@@ -47,13 +47,25 @@ $nav-height: 100px;
   grid-template-columns: 3fr 2fr;
 }
 
+.game__description {
+  padding-right: 48px;
+}
+
+@media only screen and (max-width:800px) {
+  .game__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game__description {
+    padding: 0;
+  }
+  
+}
+
 .game__rightcol {
   display: flex;
   flex-direction: column;
-}
-
-.game__description {
-  padding-right: 48px;
 }
 
 .website {

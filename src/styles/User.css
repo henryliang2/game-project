@@ -8,6 +8,8 @@
   border-radius: 6px;
   border: 2px #66130a dashed;
   color: #ccc;
+  padding: 48px;
+  box-sizing: border-box;
 }
 
 /*# sourceMappingURL=User.css.map */
