@@ -1,6 +1,33 @@
+.footer__background {
+  background: black;
+}
+
 .footer {
+  display: flex;
+  align-items: center;
+  color: #ddd;
   margin-top: 40px;
-  background: #222;
+  padding: 40px 0;
+}
+
+.footer__logo {
+  color: #888;
+  font-family: "Bebas Neue", Arial, sans-serif;
+  font-size: 2.4rem;
+  transition: all 0.2s ease;
+  padding-top: 4px;
+  margin-right: 24px;
+}
+.footer__logo:hover {
+  color: #ddd;
+}
+
+.footer__github {
+  color: #888;
+  transition: all 0.2s ease;
+}
+.footer__github:hover {
+  color: #ddd;
 }
 
 /*# sourceMappingURL=Footer.css.map */
