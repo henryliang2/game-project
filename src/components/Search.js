@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
 import './../styles/App.css';
+import './../styles/User.css';
 import GameList from './GameList';
 import { BackgroundImageContext } from './../App';
 
@@ -32,10 +33,19 @@ const Search = ({type}) => {
   return (
     <div className='layout' >
 
-      <GameList 
-        title={ `Results for "${ queryString }"` }
-        games={ returnedGames }
-      />
+      { returnedGames.length 
+
+        ? <GameList 
+            title={ `Results for "${ queryString }"` }
+            games={ returnedGames }
+          />
+        : <React.Fragment>
+            <div className='layout__title'>{`Results for "${ queryString }"`}</div>
+            <div className='blank-list__area'>No Results Found! Try a different search term.</div>
+          </React.Fragment>
+      }
+
+      
 
     </div>
   );
