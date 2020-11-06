@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom"; //eslint-disable-line
 import { UserContext } from './../App'
+import { SERVER_URL } from './../urls';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import './../styles/Navigation.css'
@@ -70,14 +71,14 @@ const Navigation = () => {
                       <Link to='/user'>
                         <div className='nav__dropdown-link'><PersonIcon />&nbsp;My Profile</div>
                       </Link>
-                      <a href='https://game-project-server.herokuapp.com/auth/logout'>
+                      <a href={`${ SERVER_URL }/auth/logout`}>
                         <div className='nav__dropdown-link'><ExitToAppIcon />&nbsp;Logout</div>
                       </a>
                     </div> 
                   }
               </div>
 
-            : <a href='https://game-project-server.herokuapp.com/auth/google'>
+            : <a href={`${ SERVER_URL }/auth/google`}>
                 <div className='nav__signin'>Sign In</div>
               </a>
 

@@ -9,6 +9,7 @@ import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import LinkIcon from '@material-ui/icons/Link';
 import ToggleButton from './ToggleButton';
+import { SERVER_URL } from './../urls';
 import './../styles/App.css';
 import './../styles/Game.css';
 
@@ -31,7 +32,7 @@ const Game = () => {
   });
 
   useEffect(() => {
-    fetch(`https://game-project-server.herokuapp.com/game/${gameId}`)
+    fetch(`${ SERVER_URL }/game/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
       console.log(data);

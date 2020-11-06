@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
 import './../styles/App.css';
 import './../styles/User.css';
+import { SERVER_URL } from './../urls';
 import GameList from './GameList';
 import { BackgroundImageContext } from './../App';
 
@@ -21,7 +22,7 @@ const Search = ({type}) => {
 
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
     if (type === 'targeted') {
-      fetch(`https://game-project-server.herokuapp.com/search/${queryString}`)
+      fetch(`${ SERVER_URL }/search/${queryString}`)
       .then(jsonData => jsonData.json())
       .then(data => { 
         setReturnedGames(data.array);
@@ -29,7 +30,7 @@ const Search = ({type}) => {
       })
       .catch(e => { setHasApiResponse(true) })
     } else if (type === 'browse') {
-      fetch(`https://game-project-server.herokuapp.com/browse/${dateString}/${orderingString}`)
+      fetch(`${ SERVER_URL }/browse/${dateString}/${orderingString}`)
       .then(jsonData => jsonData.json())
       .then(data => { 
         setReturnedGames(data.array);

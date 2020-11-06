@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams, useHistory } from "react-router-dom"; //eslint-disable-line
 import { BackgroundImageContext } from './../App';
+import { SERVER_URL } from './../urls';
 import GameList from './GameList';
 import './../styles/App.css';
 import './../styles/Landing.css';
@@ -36,7 +37,7 @@ const Landing = () => {
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
 
     if(!upcomingGames.length) {
-      fetch('https://game-project-server.herokuapp.com/upcoming')
+      fetch(`${ SERVER_URL }/upcoming`)
       .then(jsonData => jsonData.json())
       .then(data => {
         setUpcomingGames(data.results.slice(0, 4))
@@ -44,7 +45,7 @@ const Landing = () => {
     }
 
     if(!popularGames.length) {
-      fetch('https://game-project-server.herokuapp.com/popular')
+      fetch(`${ SERVER_URL }/popular`)
       .then(jsonData => jsonData.json())
       .then(data => { 
         const gameArray = data.results.slice(0, 12);

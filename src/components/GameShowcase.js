@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { SERVER_URL } from './../urls';
 import './../styles/App.css'
 import './../styles/GameShowcase.css'
 
@@ -16,7 +17,7 @@ const GameShowcase = ({ game, gameId }) => {
   const refArray = [image0, image1, image2, image3];
 
   useEffect(() => {
-    fetch(`https://game-project-server.herokuapp.com/screenshots/${gameId}`)
+    fetch(`${ SERVER_URL }/screenshots/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
       console.log(data);

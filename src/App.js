@@ -6,6 +6,7 @@ import Game from './components/Game';
 import Search from './components/Search';
 import User from './components/User';
 import Footer from './components/Footer';
+import { SERVER_URL } from './urls';
 import './styles/App.css';
 
 export const UserContext = React.createContext(null);
@@ -17,7 +18,7 @@ function App() {
   const [backgroundImage, setBackgroundImage] = useState(process.env.PUBLIC_URL + '/default-background.jpg');
 
   useEffect(() => {
-    fetch('https://game-project-server.herokuapp.com/user/sync', { credentials: 'include' })
+    fetch(`${ SERVER_URL }/user/sync`, { credentials: 'include' })
     .then(jsonData => jsonData.json())
     .then(user => {
       if(user.userId) setUser(user);
@@ -26,7 +27,7 @@ function App() {
 
   useEffect(() => {
     if(user.userId) {
-      fetch('https://game-project-server.herokuapp.com/user/update', { 
+      fetch(`${ SERVER_URL }/user/update`, { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ user }),
