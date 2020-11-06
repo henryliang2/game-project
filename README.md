@@ -2,7 +2,7 @@
 
 Game Project is a website to browse through trending and popular games. 
 
-Game Project was built using React, HTML/CSS, SASS Express, and MongoDB. Authentication was  
+Game Project was built using React, HTML/CSS, SASS, Express, and MongoDB. Authentication was  
 implemented using Passport.js using OAuth 2.0 flow. Figma and Adobe Creative Suite were used  
 for prototyping and design.
 
