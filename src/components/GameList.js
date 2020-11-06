@@ -41,7 +41,9 @@ const GameList = ({ games, title }) => {
     <React.Fragment>
       <div className='layout__title'>{ title }</div>
       <div className='game-card__container'>
-        <img className='game-card__scroll-indicator' src={ ScrollIndicator } alt='scroll indicator'/>
+        { games.length > 1 &&
+          <img className='game-card__scroll-indicator' src={ ScrollIndicator } alt='scroll indicator'/>
+        }
         { games.map((game, i) => {
             return <GameCard game={game} key={i}/>
           })
