@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; //eslint-disable-line
+import ScrollIndicator from './../resources/scroll-indicator.png';
 import './../styles/App.css';
 import './../styles/GameList.css';
 
@@ -38,16 +39,14 @@ const GameList = ({ games, title }) => {
 
   return (
     <React.Fragment>
-      { title && 
-        <div className='layout__title'>{ title }</div>
-      } 
-      { games &&
-        <div className='game-card__container'>
-          { games.map((game, i) => {
-              return <GameCard game={game} key={i}/>
-            })}
-        </div>
-      }
+      <div className='layout__title'>{ title }</div>
+      <div className='game-card__container'>
+        <img className='game-card__scroll-indicator' src={ ScrollIndicator } alt='scroll indicator'/>
+        { games.map((game, i) => {
+            return <GameCard game={game} key={i}/>
+          })
+        }
+      </div>
     </React.Fragment>
   )
 }

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700&display=swap");
 .game-card__container {
+  position: relative;
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
@@ -27,6 +28,17 @@
   box-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.6);
 }
 
+.game-card__scroll-indicator {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 40px;
+  height: 120px;
+  margin-top: 60px;
+  opacity: 0.8;
+}
+
 @media only screen and (max-width: 800px) {
   .game-card__container {
     flex-wrap: nowrap;
@@ -34,11 +46,20 @@
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    padding-left: 40px;
+  }
+
+  .game-card__scroll-indicator {
+    display: inline;
   }
 
   .game-card__container::-webkit-scrollbar {
-    display: none;
+    height: 4px;
     background: transparent;
+  }
+
+  .game-card__container::-webkit-scrollbar-thumb {
+    background: white;
   }
 
   .game-card {
