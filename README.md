@@ -14,6 +14,6 @@ Repository for Node.js server at https://github.com/henryliang2/game-project-bac
 
 ## Resources Used
 
-Stack: React, Express, MongoDB, SASS
+Stack: React, Express, MongoDB, SASS  
 API: [RAWG api](https://api.rawg.io/docs/)  
 Icons: [Material-UI](https://material-ui.com/)
