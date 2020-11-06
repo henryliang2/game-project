@@ -58,6 +58,11 @@
   .game__description {
     padding: 0;
   }
+
+  .game__toggle-buttons {
+    margin-top: 12px;
+    justify-self: center;
+  }
 }
 .game__rightcol {
   display: flex;

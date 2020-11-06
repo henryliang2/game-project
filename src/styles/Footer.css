@@ -16,6 +16,22 @@
   align-items: center;
 }
 
+@media only screen and (max-width: 800px) {
+  .footer__background {
+    margin-top: 24px;
+  }
+
+  .footer {
+    flex-direction: column;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+
+  .footer__leftcol {
+    margin-bottom: 24px;
+  }
+}
 .footer__logo {
   display: inline;
   color: #888;

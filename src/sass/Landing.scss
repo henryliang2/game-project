@@ -143,6 +143,16 @@ $dark-red: #66130a;
   }
 }
 
+@media only screen and (max-width: 800px) {
+  .select {
+    flex-direction: column;
+  }
+
+  .select select {
+    margin-bottom: 12px;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
 
   .landing {
