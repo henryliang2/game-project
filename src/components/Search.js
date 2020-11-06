@@ -5,6 +5,7 @@ import './../styles/User.css';
 import { SERVER_URL } from './../urls';
 import GameList from './GameList';
 import { BackgroundImageContext } from './../App';
+import { CircularProgress } from '@material-ui/core';
 
 const Search = ({type}) => {
 
@@ -44,7 +45,7 @@ const Search = ({type}) => {
   return (
     <div className='layout' >
 
-      { ( hasApiResponse && returnedGames.length === 0 )
+      { hasApiResponse && returnedGames.length === 0
 
         ? <React.Fragment>
             <div className='layout__title'>{`Results for "${ queryString }"`}</div>
@@ -57,6 +58,12 @@ const Search = ({type}) => {
           />
       }
 
+      { // Show spinner if API Response not received
+        !hasApiResponse && 
+          <div className='search__spinner'>
+            <CircularProgress size={180} color='secondary' />
+          </div>
+      }
       
 
     </div>

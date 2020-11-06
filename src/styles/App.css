@@ -56,4 +56,12 @@ a {
   margin-bottom: 12px;
 }
 
+.search__spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 120px;
+}
+
 /*# sourceMappingURL=App.css.map */
