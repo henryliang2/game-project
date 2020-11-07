@@ -4,7 +4,7 @@ Game Project is a website to browse through trending and popular games.
 
 Game Project was built using React, HTML/CSS, SASS, Express, and MongoDB. Authentication was  
 implemented with Passport.js using OAuth 2.0 flow. Figma and Adobe Creative Suite were used  
-for prototyping and design.
+for prototyping and design. All animations and effects were made using CSS.
 
 See the project hosted at https://gameproject.netlify.app
 
