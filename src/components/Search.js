@@ -58,14 +58,6 @@ const Search = ({type}) => {
           />
       }
 
-      { // Show spinner if API Response not received
-        !hasApiResponse && 
-          <div className='search__spinner'>
-            <CircularProgress size={180} color='secondary' />
-          </div>
-      }
-      
-
     </div>
   );
 

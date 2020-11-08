@@ -36,7 +36,6 @@
   overflow: hidden;
   transition: all 0.2s ease;
   border-radius: 6px;
-  min-height: 200px;
 }
 .landing__image .landing__text-overlay {
   position: absolute;

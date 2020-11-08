@@ -48,6 +48,11 @@ const GameList = ({ games, title }) => {
             return <GameCard game={game} key={i}/>
           })
         }
+        { !games.length &&
+          <div className='spinner spinner--gamelist'>
+            <CircularProgress size={160} color='secondary' />
+          </div>
+        }
       </div>
     </React.Fragment>
   )

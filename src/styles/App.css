@@ -56,12 +56,20 @@ a {
   margin-bottom: 12px;
 }
 
-.search__spinner {
+.spinner {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.spinner--search {
   margin-top: 120px;
+}
+
+.spinner--gamelist {
+  margin-top: 24px;
 }
 
 /*# sourceMappingURL=App.css.map */

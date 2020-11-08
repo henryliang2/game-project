@@ -5,6 +5,7 @@ import { SERVER_URL } from './../urls';
 import GameList from './GameList';
 import './../styles/App.css';
 import './../styles/Landing.css';
+import { CircularProgress } from '@material-ui/core';
 
 const Landing = () => {
 
@@ -59,83 +60,87 @@ const Landing = () => {
 
       <div className='layout__title'>Most Anticipated Releases</div>
     
-      { upcomingGames.length > 0 &&
-
-        <div className='landing'>
-          <div className='landing__image landing__image--left'>
-            <Link to={`/game/${upcomingGames[0].id}`}> 
-              <img 
-                className='img'
-                ref={landingImageLeft} 
-                src={ upcomingGames[0].background_image } 
-                alt={ upcomingGames[0].name } 
-                onLoad={() => { landingImageLeft.current.classList.add('img--loaded') }}
-                />
-              <div className='landing__text-overlay'>{ upcomingGames[0].name }</div>
-              </Link>
-            </div>
-          <div className='landing__image landing__image--right-top'>
-            <Link to={`/game/${upcomingGames[1].id}`}>
-              <img 
-                className='img'
-                ref={landingImageRightTop} 
-                src={ upcomingGames[1].background_image } 
-                alt={ upcomingGames[1].name } 
-                onLoad={() => { landingImageRightTop.current.classList.add('img--loaded') }}
-                />
-              <div className='landing__text-overlay'>{ upcomingGames[1].name }</div>
-              </Link>
-            </div>
-          
-          <div className='landing__image landing__image--right-center'>
-            <Link to={`/game/${upcomingGames[2].id}`}>
-              <img 
-                className='img'
-                ref={landingImageRightCenter} 
-                src={ upcomingGames[2].background_image } 
-                alt={ upcomingGames[2].name } 
-                onLoad={() => { landingImageRightCenter.current.classList.add('img--loaded') }}
-                />
-              <div className='landing__text-overlay'>{ upcomingGames[2].name }</div>
-            </Link>
+      { !upcomingGames.length
+        
+        ? <div className='spinner spinner--gamelist'>
+            <CircularProgress size={160} color='secondary' />
           </div>
 
-          <div className='landing__select'>
-            <div className='layout__title'>Browse for Games</div>
-            <form onSubmit={(event) => {
-              event.preventDefault();
-              if (!selectValue) return;
-              history.push(`/browse/${selectValue}`)
-            }}>
-              <div className='select'>
-                <select 
-                  value={selectValue}
-                  onChange={(event) => { setSelectValue(event.target.value); console.log(event.target) }
-                }>
-                  <option value=''>
-                    Select An Option
-                  </option>
-                  <option value={`${currDateString},${oneYearForwardString}/-added/Most Anticipated This Year`}>
-                    Most Anticipated This Year
-                  </option>
-                  <option value={`${threeMonthsAgoString},${currDateString}/-added/Popular in Past 3 Months`}>
-                    Popular in Past 3 Months
-                  </option>
-                  <option value={`${oneYearAgoString},${currDateString}/-added/Popular in Past Year`}>
-                    Popular in Past Year
-                  </option>
-                  <option value={`${threeMonthsAgoString},${currDateString}/-rating/Highest Rated in Past 3 Months`}>
-                    Highest Rated in Past 3 Months
-                  </option>
-                  <option value={`${oneYearAgoString},${currDateString}/-rating/Highest Rated in Past Year`}>
-                    Highest Rated in Past Year
-                  </option>
-                </select>
-                <input type='submit' value='Browse' className='select__submit' />
+        : <div className='landing'>
+            <div className='landing__image landing__image--left'>
+              <Link to={`/game/${upcomingGames[0].id}`}> 
+                <img 
+                  className='img'
+                  ref={landingImageLeft} 
+                  src={ upcomingGames[0].background_image } 
+                  alt={ upcomingGames[0].name } 
+                  onLoad={() => { landingImageLeft.current.classList.add('img--loaded') }}
+                  />
+                <div className='landing__text-overlay'>{ upcomingGames[0].name }</div>
+                </Link>
               </div>
-            </form>
+            <div className='landing__image landing__image--right-top'>
+              <Link to={`/game/${upcomingGames[1].id}`}>
+                <img 
+                  className='img'
+                  ref={landingImageRightTop} 
+                  src={ upcomingGames[1].background_image } 
+                  alt={ upcomingGames[1].name } 
+                  onLoad={() => { landingImageRightTop.current.classList.add('img--loaded') }}
+                  />
+                <div className='landing__text-overlay'>{ upcomingGames[1].name }</div>
+                </Link>
+              </div>
+            
+            <div className='landing__image landing__image--right-center'>
+              <Link to={`/game/${upcomingGames[2].id}`}>
+                <img 
+                  className='img'
+                  ref={landingImageRightCenter} 
+                  src={ upcomingGames[2].background_image } 
+                  alt={ upcomingGames[2].name } 
+                  onLoad={() => { landingImageRightCenter.current.classList.add('img--loaded') }}
+                  />
+                <div className='landing__text-overlay'>{ upcomingGames[2].name }</div>
+              </Link>
+            </div>
+
+            <div className='landing__select'>
+              <div className='layout__title'>Browse for Games</div>
+              <form onSubmit={(event) => {
+                event.preventDefault();
+                if (!selectValue) return;
+                history.push(`/browse/${selectValue}`)
+              }}>
+                <div className='select'>
+                  <select 
+                    value={selectValue}
+                    onChange={(event) => { setSelectValue(event.target.value); console.log(event.target) }
+                  }>
+                    <option value=''>
+                      Select An Option
+                    </option>
+                    <option value={`${currDateString},${oneYearForwardString}/-added/Most Anticipated This Year`}>
+                      Most Anticipated This Year
+                    </option>
+                    <option value={`${threeMonthsAgoString},${currDateString}/-added/Popular in Past 3 Months`}>
+                      Popular in Past 3 Months
+                    </option>
+                    <option value={`${oneYearAgoString},${currDateString}/-added/Popular in Past Year`}>
+                      Popular in Past Year
+                    </option>
+                    <option value={`${threeMonthsAgoString},${currDateString}/-rating/Highest Rated in Past 3 Months`}>
+                      Highest Rated in Past 3 Months
+                    </option>
+                    <option value={`${oneYearAgoString},${currDateString}/-rating/Highest Rated in Past Year`}>
+                      Highest Rated in Past Year
+                    </option>
+                  </select>
+                  <input type='submit' value='Browse' className='select__submit' />
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
 
       }
 
