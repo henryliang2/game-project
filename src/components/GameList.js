@@ -44,14 +44,15 @@ const GameList = ({ games, title }) => {
         { games.length > 1 &&
           <img className='game-card__scroll-indicator' src={ ScrollIndicator } alt='scroll indicator'/>
         }
-        { games.map((game, i) => {
-            return <GameCard game={game} key={i}/>
-          })
-        }
-        { !games.length &&
-          <div className='spinner spinner--gamelist'>
-            <CircularProgress size={160} color='secondary' />
-          </div>
+        { games.length
+
+          ? games.map((game, i) => {
+              return <GameCard game={game} key={i}/>
+            })
+
+          : <div className='spinner spinner--gamelist'>
+              <CircularProgress size={160} color='secondary' />
+            </div>
         }
       </div>
     </React.Fragment>

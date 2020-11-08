@@ -60,13 +60,9 @@ const Landing = () => {
 
       <div className='layout__title'>Most Anticipated Releases</div>
     
-      { !upcomingGames.length
-        
-        ? <div className='spinner spinner--gamelist'>
-            <CircularProgress size={160} color='secondary' />
-          </div>
+      { upcomingGames.length
 
-        : <div className='landing'>
+        ? <div className='landing'>
             <div className='landing__image landing__image--left'>
               <Link to={`/game/${upcomingGames[0].id}`}> 
                 <img 
@@ -140,6 +136,10 @@ const Landing = () => {
                 </div>
               </form>
             </div>
+          </div>
+
+        : <div className='spinner spinner--gamelist'>
+            <CircularProgress size={160} color='secondary' />
           </div>
 
       }
