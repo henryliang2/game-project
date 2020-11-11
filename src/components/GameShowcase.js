@@ -20,7 +20,6 @@ const GameShowcase = ({ game, gameId }) => {
     fetch(`${ SERVER_URL }/screenshots/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
-      console.log(data);
       const urls = data.array.map(object => {
         return object.image
       })

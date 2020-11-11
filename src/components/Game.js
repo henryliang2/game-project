@@ -35,7 +35,6 @@ const Game = () => {
     fetch(`${ SERVER_URL }/game/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
-      console.log(data);
       setGame(data);
       if(data.background_image) setBackgroundImage(data.background_image);
     })
@@ -54,7 +53,6 @@ const Game = () => {
 
     // Create an Array representing stars of the form [1, 1, 1, 0.5, 0]
     if (game.stars) {
-      console.log(game.stars);
       const stars = [];
       for(let i=0; i < Math.floor(game.stars); i++) {
         stars.push(1);

@@ -12,8 +12,6 @@ const User = () => {
 
   useEffect(() => {
     setBackgroundImage(process.env.PUBLIC_URL + '/default-background.jpg');
-
-    console.log(user);
   }, []) //eslint-disable-line
 
   return (
