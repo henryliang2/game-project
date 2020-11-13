@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"; //eslint-disable-line
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom"; //eslint-disable-line
 import ScrollIndicator from './../resources/scroll-indicator.png';
 import './../styles/App.css';
 import './../styles/GameList.css';
@@ -11,6 +11,8 @@ export const GameCard = ({ game }) => {
 
   const imageRef = useRef(null);
 
+  const history = useHistory();
+
   return (
     <div className='game-card'>
       { // Display loading spinner if not yet loaded
@@ -19,7 +21,13 @@ export const GameCard = ({ game }) => {
           <CircularProgress color="secondary" />
         </div>
       }
-      <Link to={`/game/${game.id}`}>
+      <div 
+        className='game-card__link' 
+        onClick={() => { 
+          history.push(`/game/${game.id}`);
+          window.scrollTo(0, 0);
+        }}
+        >
         <img 
           className='game-card__image'
           ref={ imageRef }
@@ -29,7 +37,7 @@ export const GameCard = ({ game }) => {
             setIsImageLoaded(true);
             imageRef.current.classList.add('game-card__image--loaded') ;
           }}/>
-      </Link>
+      </div>
       <div className='game-card__name'>{ game.name }</div>
     </div>
   );

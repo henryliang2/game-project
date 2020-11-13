@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom"; //eslint-disable-line
 import GameShowcase from './GameShowcase';
+import GameList from './GameList';
 import { BackgroundImageContext, UserContext } from './../App';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -21,6 +22,7 @@ const Game = () => {
   const { setBackgroundImage } = useContext(BackgroundImageContext);
 
   const [starArray, setStarArray] = useState([]);
+  const [suggestedGames, setSuggestedGames] = useState([]);
   const [isInWatchList, setIsInWatchList] = useState(false);
   const [isInFavourites, setIsInFavourites] = useState(false);
   const [game, setGame] = useState({
@@ -32,15 +34,25 @@ const Game = () => {
   });
 
   useEffect(() => {
+    setSuggestedGames([]);
+
     fetch(`${ SERVER_URL }/game/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
       setGame(data);
       if(data.background_image) setBackgroundImage(data.background_image);
     })
-  }, []) //eslint-disable-line
+
+    fetch(`${ SERVER_URL }/game/${gameId}/suggested`)
+    .then(jsonData => jsonData.json())
+    .then(data => { setSuggestedGames(data.array) })
+  }, [gameId]) //eslint-disable-line
 
   useEffect(() => {
+    setIsInFavourites(false);
+    setIsInWatchList(false);
+    setStarArray([]);
+
     // Check if game is in watchlist or favourites
     if(user.userId) {
       user.watchlist.forEach((game, i) => {
@@ -132,6 +144,13 @@ const Game = () => {
                 })}
               </div>
             </div>
+          </div>
+
+          <div className='game__suggested'>
+            <GameList 
+              title='Similar Titles' 
+              games={ suggestedGames }
+              />
           </div>
         </div>
   );

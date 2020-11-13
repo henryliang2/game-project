@@ -5,9 +5,9 @@ import './../styles/GameShowcase.css'
 
 const GameShowcase = ({ game, gameId }) => {
 
-  const [screenshots, setScreenshots] = useState([]);
-
   const [selectedButton, setSelectedButton] = useState(0);
+  const [screenshots, setScreenshots] = useState([]);
+  const [clip, setClip] = useState('');
 
   const image0 = useRef(null);
   const image1 = useRef(null);
@@ -17,6 +17,9 @@ const GameShowcase = ({ game, gameId }) => {
   const refArray = [image0, image1, image2, image3];
 
   useEffect(() => {
+    setScreenshots([]);
+    setClip('');
+
     fetch(`${ SERVER_URL }/screenshots/${gameId}`)
     .then(jsonData => jsonData.json())
     .then(data => { 
@@ -26,22 +29,23 @@ const GameShowcase = ({ game, gameId }) => {
       if(game.clip) {
         const shortArray = urls.splice(0, 3);
         setScreenshots([game.clip.preview, ...shortArray]);
+        setClip(game.clip.clip);
       } else {
         const shortArray = urls.splice(0, 4);
         setScreenshots(shortArray);
       }
     });
-  }, []) //eslint-disable-line
+  }, [game]) //eslint-disable-line
 
   return (
     <React.Fragment>
       <div className='showcase'>
         <div className='showcase__active'>
           {
-            game.clip && selectedButton === 0
+            clip && selectedButton === 0
 
             ? <video controls autoPlay muted>
-                <source src={ game.clip.clip } type="video/mp4" />
+                <source src={ clip } type="video/mp4" />
                 Your browser does not support embedded videos
               </video>
             
